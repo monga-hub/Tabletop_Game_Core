@@ -8,6 +8,11 @@
 // il framework sa rappresentare una sequenza ordinata di pick?
 //
 // NON c'è: refill, mano vera, contratti, valore, asta, Solver. Tutto dopo.
+//
+// Questo system NON conosce il system che crea il draft. Conosce solo il FATTO
+// __draft__ nello stato e gli eventi che lo toccano. Non collaborano i System:
+// collaborano i fatti. Se domani il draft fosse creato da un altro system, il
+// pick continuerebbe a funzionare: non conosce il produttore, solo il linguaggio.
 // ============================================================
 import { System, GameState, GameEvent, Intent, EventDraft } from "../../packages/core/types";
 

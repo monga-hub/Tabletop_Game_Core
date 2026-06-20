@@ -25,13 +25,31 @@ export class Session {
     systems: System[];
     projections?: Projection<unknown>[];
     seed?: number;
-    initialState?: GameState;
   }) {
     this.systems = opts.systems;
     this.projections = opts.projections ?? [];
-    this.state = opts.initialState
-      ? opts.initialState
-      : { ...EMPTY_STATE, rngState: opts.seed ?? 0 };
+    // Una Session nasce SEMPRE vuota. L'unico modo di darle stato è submit()
+    // (durante il gioco) o Session.fromLog() (ricostruzione dal log).
+    // Non esiste alcun modo di iniettare stato arbitrario: era la porta laterale
+    // che ha causato il primo bug (seedDraft). Toglierla rende l'invariante
+    // "una Session è ricostruibile solo dal suo log" vera per costruzione.
+    this.state = { ...EMPTY_STATE, rngState: opts.seed ?? 0 };
+  }
+
+  /**
+   * Ricostruisce una Session da un log esistente, rigiocandolo.
+   * L'UNICO modo legittimo di avere una Session con stato non-vuoto senza
+   * averlo costruito turno per turno. Non inietta stato: lo deriva dal log.
+   */
+  static fromLog(log: readonly GameEvent[], systems: System[], seed = 0): Session {
+    const s = new Session({ systems, seed });
+    for (const event of log) {
+      s.log.push(event);
+      const sys = systems.find((sy) => sy.handles(event.type));
+      if (sys) s.state = sys.apply(s.state, event);
+      s.nextId = Math.max(s.nextId, event.id + 1);
+    }
+    return s;
   }
 
   /** Il log è la verità. Esposto in sola lettura. */
