@@ -60,6 +60,25 @@ Due scenari distinti, entrambi vivi, nessuno sostituisce l'altro:
 
 I contratti (0032) verranno valutati su Scenario B, non sul baseline.
 
+## Checklist prima di ogni nuovo commit di meccanica
+
+Emersa da A-005 (cardsPerPlayer=2 rendeva il contratto S0 irraggiungibile per
+costruzione) e confermata da 0032 (l'ordering benchmark non poteva cambiare,
+per costruzione, e per poco non l'abbiamo scambiato per un'osservazione).
+Non è un nuovo benchmark: è un controllo di validità dell'esperimento, da
+fare PRIMA di scrivere il codice della meccanica.
+
+1. **La meccanica è implementabile?** (la domanda ovvia, quasi sempre sì)
+2. **Lo scenario attuale permette almeno di osservarla?** O la rende
+   irraggiungibile/invisibile per una ragione strutturale che non ha niente
+   a che fare con la meccanica stessa (dimensione mano, ordine del mazzo,
+   numero di giocatori, ecc.)?
+
+Se la risposta a 2 è no, il problema da risolvere prima è lo scenario
+(affiancare, non sostituire il baseline — vedi Scenario A vs B), non la
+meccanica. Saltare questo controllo produce risultati banali travestiti da
+osservazioni.
+
 ## Nota metodologica su 0032
 
 L'osservazione "i 3 agenti strategici non completano mai il contratto S0,
