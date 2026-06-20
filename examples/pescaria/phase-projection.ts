@@ -17,7 +17,7 @@ export class PhaseProjection implements Projection<PhaseView> {
 
   observe(event: GameEvent): void {
     if (event.type === "pescaria.phase.changed") this.phase = event.payload.to as string;
-    else if (event.type === "pescaria.player.order.generated") this.order = event.payload.order as string[];
+    else if (event.type === "pescaria.draft.order.decided") this.order = event.payload.order as string[];
   }
 
   view(): PhaseView {

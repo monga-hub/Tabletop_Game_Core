@@ -32,7 +32,7 @@ assert(r.emitted.length === 4, "draft.start produce una catena di 4 eventi (1 in
 const types = r.emitted.map((e) => e.type);
 assert(types.includes("pescaria.phase.changed"), "  ...include phase.changed");
 assert(types.includes("pescaria.draft.created"), "  ...include draft.created");
-assert(types.includes("pescaria.player.order.generated"), "  ...include player.order.generated");
+assert(types.includes("pescaria.draft.order.decided"), "  ...include player.order.generated");
 
 // 2. ogni conseguenza è causata dall'intent (catena causale)
 const consequences = r.emitted.filter((e) => e.type !== "pescaria.draft.start");

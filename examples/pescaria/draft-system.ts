@@ -48,7 +48,7 @@ export const PescariaDraftSystem: System = {
     return type === "pescaria.draft.start"
         || type === "pescaria.phase.changed"
         || type === "pescaria.draft.created"
-        || type === "pescaria.player.order.generated";
+        || type === "pescaria.draft.order.decided";
   },
 
   validate(state: GameState, intent: Intent): string | null {
@@ -72,14 +72,22 @@ export const PescariaDraftSystem: System = {
 
   reduce(state: GameState, intent: Intent): EventDraft[] {
     const players = intent.payload.players as string[];
-    // l'ordine dei giocatori è generato QUI, deterministicamente dallo stato.
-    // Il risultato (l'ordine già mescolato) viaggia nel payload dell'evento:
-    // l'evento è il fatto, non l'atto di mescolare.
+    // L'ordine è deciso QUI, deterministicamente dallo stato. Ma nel payload
+    // registriamo il FATTO (l'ordine deciso), non l'algoritmo né lo stato RNG.
+    // Scelta architetturale: log AUTOSUFFICIENTE. Il replay legge l'ordine dal
+    // log, non lo ricalcola. Così, se un domani cambiasse l'algoritmo di shuffle,
+    // i log esistenti resterebbero validi: l'ordine è un fatto registrato, non
+    // una simulazione da rieseguire.
     const { shuffled, next } = shuffleDeterministic(players, state.rngState);
     return [
+      // NOTA: "phase" è un concetto candidato alla promozione nel Core.
+      // Resta in pescaria.* finché un SECONDO gioco non avrà le fasi (principio #7).
       { type: "pescaria.phase.changed", producer: NS, payload: { from: "idle", to: "draft" } },
       { type: "pescaria.draft.created", producer: NS, payload: { players: [...players] } },
-      { type: "pescaria.player.order.generated", producer: NS, payload: { order: shuffled, rngAfter: next } },
+      // l'avanzamento dell'RNG (next) va nel payload SOLO perché apply deve
+      // aggiornare lo stato RNG per il prossimo uso casuale — non per ricostruire
+      // l'ordine, che è già un fatto qui sopra.
+      { type: "pescaria.draft.order.decided", producer: NS, payload: { order: shuffled, rngAfter: next } },
     ];
   },
 
@@ -96,7 +104,7 @@ export const PescariaDraftSystem: System = {
           ...state,
           entities: { ...state.entities, __game__: { ...game, draftPlayers: event.payload.players } },
         };
-      case "pescaria.player.order.generated":
+      case "pescaria.draft.order.decided":
         // applichiamo anche l'avanzamento dell'RNG: la casualità è parte dello stato
         return {
           ...state,
