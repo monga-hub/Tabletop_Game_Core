@@ -103,9 +103,19 @@ export const PescariaDraftPickSystem: System = {
       };
     }
     if (event.type === "pescaria.draft.completed") {
+      // HANDS: al completamento, la mano corrente di ogni giocatore = le carte
+      // pescate. Da qui: pickedCards resta CONGELATO (storia del draft, immutabile),
+      // hands è lo STATO CORRENTE che le meccaniche (contratti, aste) modificano.
+      // Principio: le meccaniche modificano il presente, mai la storia.
+      const hands: Record<string, string[]> = {};
+      for (const p of d!.order) hands[p] = [...(d!.pickedCards[p] ?? [])];
       return {
         ...state,
-        entities: { ...state.entities, __draft__: { ...d!, completed: true } },
+        entities: {
+          ...state.entities,
+          __draft__: { ...d!, completed: true },
+          __hands__: hands as unknown as Record<string, unknown>,
+        },
       };
     }
     return state;
