@@ -1,0 +1,34 @@
+[
+  {
+    "agent": "random",
+    "games": 1000,
+    "playerSlots": 3000,
+    "contractsCompleted": 77,
+    "gamesWithAtLeastOne": 77,
+    "totalScore": 1155
+  },
+  {
+    "agent": "greedy-stars",
+    "games": 1000,
+    "playerSlots": 3000,
+    "contractsCompleted": 0,
+    "gamesWithAtLeastOne": 0,
+    "totalScore": 0
+  },
+  {
+    "agent": "greedy-species",
+    "games": 1000,
+    "playerSlots": 3000,
+    "contractsCompleted": 0,
+    "gamesWithAtLeastOne": 0,
+    "totalScore": 0
+  },
+  {
+    "agent": "balanced",
+    "games": 1000,
+    "playerSlots": 3000,
+    "contractsCompleted": 0,
+    "gamesWithAtLeastOne": 0,
+    "totalScore": 0
+  }
+]

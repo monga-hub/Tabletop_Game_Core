@@ -15,6 +15,8 @@
 // pick continuerebbe a funzionare: non conosce il produttore, solo il linguaggio.
 // ============================================================
 import { System, GameState, GameEvent, Intent, EventDraft } from "../../packages/core/types";
+import { Card } from "./model/card";
+import { evaluateContractsS0 } from "./contracts-s0";
 
 const NS = "pescaria";
 
@@ -109,12 +111,18 @@ export const PescariaDraftPickSystem: System = {
       // Principio: le meccaniche modificano il presente, mai la storia.
       const hands: Record<string, string[]> = {};
       for (const p of d!.order) hands[p] = [...(d!.pickedCards[p] ?? [])];
+      // CONTRACTS S0: draft.completed -> hands -> contracts.evaluate, nello
+      // stesso passo. Nessuna scelta, nessun timing, nessun evento nuovo:
+      // è una funzione pura applicata al presente appena nato (0031/0032).
+      const registry = (d as unknown as { registry?: Card[] }).registry ?? [];
+      const { hands: handsAfterContracts, scores } = evaluateContractsS0(hands, registry);
       return {
         ...state,
         entities: {
           ...state.entities,
           __draft__: { ...d!, completed: true },
-          __hands__: hands as unknown as Record<string, unknown>,
+          __hands__: handsAfterContracts as unknown as Record<string, unknown>,
+          __scores__: scores as unknown as Record<string, unknown>,
         },
       };
     }
