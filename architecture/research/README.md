@@ -18,6 +18,7 @@ all'architettura. Nessuna idea salta direttamente a "è vero".
 | H-003 | Nessuna astrazione prima di due usi (principio #7) | corroborata |
 | H-004 | Ownership = collocazione, non relazione | raffinata (vedi H-005) |
 | H-005 | Grammatica a 3 fatti: esistenza / collocazione / relazione | ipotesi, da inseguire |
+| H-006 | Le conseguenze automatiche sono Policy, non System | ipotesi (da attrito reale) |
 
 Quando una ipotesi è corroborata su abbastanza casi diversi (incluse aste,
 multiplayer, persistenza, AI su molte partite), si valuta la promozione a
