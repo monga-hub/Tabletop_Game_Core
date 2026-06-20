@@ -1,0 +1,75 @@
+{
+  "commit": "0028-frozen-battery",
+  "scenario": "draft base: 3 giocatori, 2 carte, mazzo 16 (4 specie x 4 stelle)",
+  "results": [
+    {
+      "agent": "random",
+      "games": 1000,
+      "starHist": {
+        "1": 1473,
+        "2": 1467,
+        "3": 1542,
+        "4": 1518
+      },
+      "speciesHist": {
+        "sardina": 1487,
+        "tonno": 1512,
+        "branzino": 1534,
+        "orata": 1467
+      },
+      "avgStars": 2.5175
+    },
+    {
+      "agent": "greedy-stars",
+      "games": 1000,
+      "starHist": {
+        "1": 0,
+        "2": 0,
+        "3": 2000,
+        "4": 4000
+      },
+      "speciesHist": {
+        "tonno": 2000,
+        "orata": 1000,
+        "branzino": 2000,
+        "sardina": 1000
+      },
+      "avgStars": 3.6666666666666665
+    },
+    {
+      "agent": "greedy-species",
+      "games": 1000,
+      "starHist": {
+        "1": 0,
+        "2": 0,
+        "3": 2000,
+        "4": 4000
+      },
+      "speciesHist": {
+        "tonno": 2000,
+        "orata": 1000,
+        "branzino": 2000,
+        "sardina": 1000
+      },
+      "avgStars": 3.6666666666666665
+    },
+    {
+      "agent": "balanced",
+      "games": 1000,
+      "starHist": {
+        "1": 0,
+        "2": 0,
+        "3": 2000,
+        "4": 4000
+      },
+      "speciesHist": {
+        "tonno": 2000,
+        "orata": 1000,
+        "branzino": 2000,
+        "sardina": 1000
+      },
+      "avgStars": 3.6666666666666665
+    }
+  ],
+  "sensitivity": 0.49760376325780864
+}
