@@ -46,6 +46,9 @@ export const PescariaDraftSystem: System = {
     if (!players.every((p) => typeof p === "string" && p.length > 0)) return "draft.start: non-empty player ids";
     const cards = intent.payload.cards;
     if (!Array.isArray(cards) || cards.length < 1) return "draft.start requires a non-empty card pool";
+    const N = intent.payload.cardsPerPlayer;
+    if (typeof N !== "number" || N < 1) return "draft.start requires cardsPerPlayer >= 1";
+    if (cards.length < players.length * N) return "draft.start: pool too small for cardsPerPlayer";
     const phase = (state.entities["__game__"] as { phase?: string } | undefined)?.phase;
     if (phase && phase !== "idle") return `cannot start draft: phase already active (${phase})`;
     return null;
@@ -54,6 +57,7 @@ export const PescariaDraftSystem: System = {
   reduce(state: GameState, intent: Intent): EventDraft[] {
     const players = intent.payload.players as string[];
     const cards = intent.payload.cards as string[];
+    const N = intent.payload.cardsPerPlayer as number;
     const { shuffled, next } = shuffleDeterministic(players, state.rngState);
     return [
       // "phase" candidata alla promozione nel Core (ora esiste anche in TTT: stato terminale).
@@ -61,7 +65,7 @@ export const PescariaDraftSystem: System = {
       // draft.created porta TUTTO ciò che serve a ricostruire il draft dal log:
       // ordine giocatori e carte disponibili. Niente stato iniettato da fuori.
       { type: "pescaria.draft.order.decided", producer: NS, payload: { order: shuffled, rngAfter: next } },
-      { type: "pescaria.draft.created", producer: NS, payload: { order: shuffled, cards: [...cards] } },
+      { type: "pescaria.draft.created", producer: NS, payload: { order: shuffled, cards: [...cards], cardsPerPlayer: N } },
     ];
   },
 
@@ -79,6 +83,7 @@ export const PescariaDraftSystem: System = {
           __draft__: {
             order: event.payload.order, currentPlayer: 0,
             availableCards: event.payload.cards, pickedCards: {},
+            cardsPerPlayer: event.payload.cardsPerPlayer,
           } as unknown as Record<string, unknown> } };
       default:
         return state;

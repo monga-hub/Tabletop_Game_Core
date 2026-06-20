@@ -24,7 +24,7 @@ const phase = new PhaseProjection();
 const audit = new AuditProjection();
 const s = new Session({ systems: [PescariaDraftSystem], projections: [phase, audit], seed: 42 });
 
-const r = s.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C"] } });
+const r = s.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C","D"], cardsPerPlayer: 1 } });
 
 // 1. la catena: 1 intent radice + 3 conseguenze = 4 eventi
 assert(r.accepted === true, "draft.start è accettato");
@@ -48,7 +48,7 @@ assert(
 );
 
 // 4. non puoi iniziare un secondo draft mentre uno è attivo
-const r2 = s.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["x","y"], cards: ["A"] } });
+const r2 = s.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["x","y"], cards: ["A"], cardsPerPlayer: 1 } });
 assert(r2.accepted === false, "non puoi iniziare un draft se una fase è già attiva");
 
 // 5. replay == stato, con una catena multi-evento e l'RNG avanzato
@@ -58,14 +58,14 @@ assert(stateA === stateB, "replay == stato regge con catena multi-evento e RNG a
 
 // 6. DETERMINISMO: stesso seed → stesso ordine
 const s2 = new Session({ systems: [PescariaDraftSystem], seed: 42 });
-s2.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C"] } });
+s2.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C","D"], cardsPerPlayer: 1 } });
 const order1 = (s.getState().entities["__game__"] as { order: string[] }).order;
 const order2 = (s2.getState().entities["__game__"] as { order: string[] }).order;
 assert(order1.join() === order2.join(), `stesso seed → stesso ordine (${order1.join(",")})`);
 
 // 7. seed diverso → (probabilmente) ordine diverso, comunque valido
 const s3 = new Session({ systems: [PescariaDraftSystem], seed: 999 });
-s3.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C"] } });
+s3.submit({ type: "pescaria.draft.start", agentId: "host", payload: { players: ["alice", "bob", "carol", "dave"], cards: ["A","B","C","D"], cardsPerPlayer: 1 } });
 const order3 = (s3.getState().entities["__game__"] as { order: string[] }).order;
 assert(order3.length === 4 && new Set(order3).size === 4, "seed diverso: ordine valido (4 giocatori distinti)");
 

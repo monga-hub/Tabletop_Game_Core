@@ -34,7 +34,8 @@ export const PescariaDraftPickSystem: System = {
   handles(type: string): boolean {
     return type === "pescaria.draft.pick"
         || type === "pescaria.draft.card.picked"
-        || type === "pescaria.draft.turn.advanced";
+        || type === "pescaria.draft.turn.advanced"
+        || type === "pescaria.draft.completed";
   },
 
   validate(state: GameState, intent: Intent): string | null {
@@ -56,10 +57,25 @@ export const PescariaDraftPickSystem: System = {
     const player = intent.payload.playerId as string;
     const card = intent.payload.cardId as string;
     const nextPlayer = (d.currentPlayer + 1) % d.order.length;
-    return [
+    const events: EventDraft[] = [
       { type: "pescaria.draft.card.picked", producer: NS, payload: { player, card } },
       { type: "pescaria.draft.turn.advanced", producer: NS, payload: { to: nextPlayer, player: d.order[nextPlayer] } },
     ];
+    // FATTO DERIVATO: il draft non "viene chiuso" da nessuno. Il System osserva
+    // se QUESTO pick ha reso vera la condizione (ogni giocatore possiede N carte)
+    // e in tal caso emette draft.completed. È il primo evento del framework che
+    // emerge dall'evoluzione dello stato, non dalla volontà di un Agent (H-002).
+    const N = (d as { cardsPerPlayer?: number }).cardsPerPlayer ?? Infinity;
+    // simulo lo stato dei picked DOPO questo pick (reduce vede lo stato prima)
+    const countAfter: Record<string, number> = {};
+    for (const p of d.order) countAfter[p] = (d.pickedCards[p]?.length ?? 0);
+    countAfter[player] = (countAfter[player] ?? 0) + 1;
+    const everyoneHasN = d.order.every((p) => countAfter[p] >= N);
+    if (everyoneHasN) {
+      events.push({ type: "pescaria.draft.completed", producer: NS, payload: { cardsPerPlayer: N } });
+      events.push({ type: "pescaria.phase.changed", producer: NS, payload: { from: "draft", to: "post-draft" } });
+    }
+    return events;
   },
 
   apply(state: GameState, event: GameEvent): GameState {
@@ -84,6 +100,12 @@ export const PescariaDraftPickSystem: System = {
       return {
         ...state,
         entities: { ...state.entities, __draft__: { ...d!, currentPlayer: event.payload.to as number } },
+      };
+    }
+    if (event.type === "pescaria.draft.completed") {
+      return {
+        ...state,
+        entities: { ...state.entities, __draft__: { ...d!, completed: true } },
       };
     }
     return state;

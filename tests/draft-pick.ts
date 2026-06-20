@@ -24,7 +24,7 @@ const s = new Session({ systems, projections: [turn], seed: 5 });
 
 // il draft nasce da un evento, con carte anonime nel payload
 const start = s.submit({ type: "pescaria.draft.start", agentId: "host",
-  payload: { players: ["alice", "bob", "carla"], cards: ["A", "B", "C", "D"] } });
+  payload: { players: ["alice", "bob", "carla"], cards: ["A", "B", "C", "D"], cardsPerPlayer: 1 } });
 assert(start.accepted, "draft.start crea il draft (ordine + carte) via evento");
 
 const d0 = s.getState().entities["__draft__"] as { order: string[] };
