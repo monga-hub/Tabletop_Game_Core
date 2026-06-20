@@ -1,6 +1,7 @@
 # H-006 — Le conseguenze automatiche sono Policy, non System
 
-**Status:** ipotesi (NON implementata) — nata da un attrito reale in 0022
+**Status:** ipotesi (NON implementata) — spiega l'attrito A-001
+**Spiega:** frictions/A-001-reduce-duplicates-apply.md
 **Ultima valutazione:** formulata dopo draft.completed · **Prossima rivalutazione:** ad auction.completed e contract.completed
 
 ## Ipotesi
