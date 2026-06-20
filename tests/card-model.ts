@@ -5,7 +5,7 @@
 import { Session } from "../packages/session/session";
 import { PescariaDraftSystem } from "../examples/pescaria/draft-system";
 import { PescariaDraftPickSystem } from "../examples/pescaria/draft-pick-system";
-import { GreedyAgent } from "../examples/pescaria/greedy-agent";
+import { GreedyStarsAgent as GreedyAgent } from "../examples/pescaria/agents/greedy-stars";
 import { sampleDeck, Card } from "../examples/pescaria/model/card";
 import { runGame } from "../packages/sim/simulator";
 
