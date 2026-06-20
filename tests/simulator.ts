@@ -8,6 +8,7 @@ import { PescariaDraftSystem } from "../examples/pescaria/draft-system";
 import { PescariaDraftPickSystem } from "../examples/pescaria/draft-pick-system";
 import { RandomAgent } from "../packages/sim/agent";
 import { runGame } from "../packages/sim/simulator";
+import { asCards } from "../examples/pescaria/model/test-cards";
 
 let failures = 0;
 function assert(cond: boolean, msg: string) {
@@ -25,7 +26,7 @@ const systems = [PescariaDraftSystem, PescariaDraftPickSystem];
 // una partita: 3 giocatori, 2 carte a testa, pool di 6
 const s = new Session({ systems, seed: 1 });
 s.submit({ type: "pescaria.draft.start", agentId: "host",
-  payload: { players: ["alice", "bob", "carla"], cards: ["A","B","C","D","E","F"], cardsPerPlayer: 2 } });
+  payload: { players: ["alice", "bob", "carla"], cards: asCards(["A","B","C","D","E","F"]), cardsPerPlayer: 2 } });
 
 const agents = [
   new RandomAgent("alice", makeRng(11)),
@@ -53,7 +54,7 @@ let completed = 0;
 for (let i = 0; i < 1000; i++) {
   const sim = new Session({ systems, seed: i });
   sim.submit({ type: "pescaria.draft.start", agentId: "host",
-    payload: { players: ["p1","p2","p3"], cards: ["A","B","C","D","E","F"], cardsPerPlayer: 2 } });
+    payload: { players: ["p1","p2","p3"], cards: asCards(["A","B","C","D","E","F"]), cardsPerPlayer: 2 } });
   const r = runGame(sim, [
     new RandomAgent("p1", makeRng(i*3+1)),
     new RandomAgent("p2", makeRng(i*3+2)),

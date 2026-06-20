@@ -8,6 +8,7 @@
 // dove draft.created porta le carte disponibili nel payload.
 // ============================================================
 import { System, GameState, GameEvent, Intent, EventDraft } from "../../packages/core/types";
+import { Card } from "./model/card";
 
 const NS = "pescaria";
 
@@ -44,8 +45,11 @@ export const PescariaDraftSystem: System = {
     const players = intent.payload.players;
     if (!Array.isArray(players) || players.length < 2) return "draft.start requires at least 2 players";
     if (!players.every((p) => typeof p === "string" && p.length > 0)) return "draft.start: non-empty player ids";
-    const cards = intent.payload.cards;
+    const cards = intent.payload.cards as Card[] | undefined;
     if (!Array.isArray(cards) || cards.length < 1) return "draft.start requires a non-empty card pool";
+    if (!cards.every((c) => c && typeof c.id === "string" && typeof c.species === "string" && typeof c.stars === "number")) {
+      return "draft.start: every card needs id, species, stars";
+    }
     const N = intent.payload.cardsPerPlayer;
     if (typeof N !== "number" || N < 1) return "draft.start requires cardsPerPlayer >= 1";
     if (cards.length < players.length * N) return "draft.start: pool too small for cardsPerPlayer";
@@ -56,7 +60,8 @@ export const PescariaDraftSystem: System = {
 
   reduce(state: GameState, intent: Intent): EventDraft[] {
     const players = intent.payload.players as string[];
-    const cards = intent.payload.cards as string[];
+    const cards = intent.payload.cards as Card[];
+    const cardIds = cards.map((c) => c.id);
     const N = intent.payload.cardsPerPlayer as number;
     const { shuffled, next } = shuffleDeterministic(players, state.rngState);
     return [
@@ -65,7 +70,7 @@ export const PescariaDraftSystem: System = {
       // draft.created porta TUTTO ciò che serve a ricostruire il draft dal log:
       // ordine giocatori e carte disponibili. Niente stato iniettato da fuori.
       { type: "pescaria.draft.order.decided", producer: NS, payload: { order: shuffled, rngAfter: next } },
-      { type: "pescaria.draft.created", producer: NS, payload: { order: shuffled, cards: [...cards], cardsPerPlayer: N } },
+      { type: "pescaria.draft.created", producer: NS, payload: { order: shuffled, cards: cardIds, registry: cards, cardsPerPlayer: N } },
     ];
   },
 
@@ -84,6 +89,7 @@ export const PescariaDraftSystem: System = {
             order: event.payload.order, currentPlayer: 0,
             availableCards: event.payload.cards, pickedCards: {},
             cardsPerPlayer: event.payload.cardsPerPlayer,
+            registry: event.payload.registry,
           } as unknown as Record<string, unknown> } };
       default:
         return state;

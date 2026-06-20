@@ -7,6 +7,7 @@
 import { Session } from "../packages/session/session";
 import { PescariaDraftSystem } from "../examples/pescaria/draft-system";
 import { PescariaDraftPickSystem } from "../examples/pescaria/draft-pick-system";
+import { asCards } from "../examples/pescaria/model/test-cards";
 
 let failures = 0;
 function assert(cond: boolean, msg: string) {
@@ -18,7 +19,7 @@ console.log("TEST — Session ricostruibile SOLO dal log\n");
 
 const systems = [PescariaDraftSystem, PescariaDraftPickSystem];
 const orig = new Session({ systems, seed: 9 });
-orig.submit({ type: "pescaria.draft.start", agentId: "h", payload: { players: ["a", "b"], cards: ["A", "B", "C"], cardsPerPlayer: 1 } });
+orig.submit({ type: "pescaria.draft.start", agentId: "h", payload: { players: ["a", "b"], cards: asCards(["A", "B", "C"]), cardsPerPlayer: 1 } });
 const d = orig.getState().entities["__draft__"] as { order: string[] };
 orig.submit({ type: "pescaria.draft.pick", agentId: "u", payload: { playerId: d.order[0], cardId: "A" } });
 orig.submit({ type: "pescaria.draft.pick", agentId: "u", payload: { playerId: d.order[1], cardId: "B" } });

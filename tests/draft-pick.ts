@@ -8,6 +8,7 @@ import { Session } from "../packages/session/session";
 import { PescariaDraftSystem } from "../examples/pescaria/draft-system";
 import { PescariaDraftPickSystem } from "../examples/pescaria/draft-pick-system";
 import { CurrentTurnProjection } from "../examples/pescaria/current-turn-projection";
+import { asCards } from "../examples/pescaria/model/test-cards";
 
 let failures = 0;
 function assert(cond: boolean, msg: string) {
@@ -24,7 +25,7 @@ const s = new Session({ systems, projections: [turn], seed: 5 });
 
 // il draft nasce da un evento, con carte anonime nel payload
 const start = s.submit({ type: "pescaria.draft.start", agentId: "host",
-  payload: { players: ["alice", "bob", "carla"], cards: ["A", "B", "C", "D"], cardsPerPlayer: 1 } });
+  payload: { players: ["alice", "bob", "carla"], cards: asCards(["A", "B", "C", "D"]), cardsPerPlayer: 1 } });
 assert(start.accepted, "draft.start crea il draft (ordine + carte) via evento");
 
 const d0 = s.getState().entities["__draft__"] as { order: string[] };

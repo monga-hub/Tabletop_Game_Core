@@ -8,6 +8,7 @@
 import { Session } from "../packages/session/session";
 import { PescariaDraftSystem } from "../examples/pescaria/draft-system";
 import { PescariaDraftPickSystem } from "../examples/pescaria/draft-pick-system";
+import { asCards } from "../examples/pescaria/model/test-cards";
 
 let failures = 0;
 function assert(cond: boolean, msg: string) {
@@ -22,7 +23,7 @@ const s = new Session({ systems, seed: 3 });
 
 // 2 giocatori, N=2 carte a testa, pool di 4 carte → il draft finisce dopo 4 pick
 s.submit({ type: "pescaria.draft.start", agentId: "h",
-  payload: { players: ["alice", "bob"], cards: ["A", "B", "C", "D"], cardsPerPlayer: 2 } });
+  payload: { players: ["alice", "bob"], cards: asCards(["A", "B", "C", "D"]), cardsPerPlayer: 2 } });
 const d = s.getState().entities["__draft__"] as { order: string[] };
 const [p0, p1] = d.order;
 
