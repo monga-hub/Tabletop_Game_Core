@@ -21,6 +21,7 @@ problema, solo una spiegazione.
 | A-004 | validate non sa enumerare le mosse legali | aperto |
 | A-002 | legalIntents ricalcolato integralmente a ogni passo (performance) | aperto |
 | A-003 | il simulatore sonda il turno invece di conoscerlo | aperto |
+| A-005 | lo scenario baseline (cardsPerPlayer=2) rende irraggiungibile per costruzione qualunque meccanica che richieda ≥3 carte della stessa specie in mano (es. contratti di collezione) | osservato — risolto creando uno scenario affiancato, non modificando il baseline |
 
 ## hypotheses/ — cosa pensiamo lo spieghi
 

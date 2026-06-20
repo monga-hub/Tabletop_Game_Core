@@ -38,7 +38,23 @@ non decisioni). Se divergono, ci sono trade-off veri.
 |--------|----------|------|-------------|
 | 0028 | draft base (3p, 2 carte, mazzo 16) | i 3 agenti STRATEGICI collassano (tutti 3.67★); solo random diverge | 0.498* |
 | 0029 | ordering del draft base | **ORDINE TOTALE** per tutti e 3 gli agenti strategici (0 coppie contese su 75). random: 120/120 contese (controllo: lo strumento sa rilevarle) | totale |
+| 0031 | Scenario B — collection (3p, 4 carte, mazzo 16) | A-005: con 2 carte a testa (Scenario A) nessuna meccanica che richieda 3+ carte della stessa specie è raggiungibile per costruzione. Scenario B affianca il baseline, non lo sostituisce. Nessuna meccanica nuova in questo commit: solo cardsPerPlayer 2→4 | 0.219 |
+| 0031 | ordering su Scenario B | **ORDINE TOTALE** regge anche con mani più grandi (0 coppie contese su 114 per i 3 agenti strategici). random: 120/120 contese (controllo). Punto di riferimento PRIMA di introdurre i contratti (0032): se l'ordine si romperà, sapremo che non è un effetto della sola dimensione della mano | totale |
 
 *la sensibilità 0.498 è quasi tutta random-vs-gruppo. I tre agenti strategici
 sono identici: nel draft attuale la strategia NON conta. È il baseline contro cui
 misurare se i contratti creeranno un trade-off reale.
+
+## Scenario A vs Scenario B
+
+Due scenari distinti, entrambi vivi, nessuno sostituisce l'altro:
+
+- **Scenario A — baseline** (`cardsPerPlayer = 2`, run-benchmark.ts / run-ordering.ts):
+  studia il draft minimale. Resta congelato.
+- **Scenario B — collection** (`cardsPerPlayer = 4`, run-benchmark-collection.ts /
+  run-ordering-collection.ts): nasce per rendere osservabili meccaniche di
+  collezione (A-005). Con 3 carte la mano coinciderebbe quasi col contratto
+  stesso (solo completato/non completato); con 4 compare un minimo di spazio
+  decisionale (tengo una carta forte o la terza sardina?).
+
+I contratti (0032) verranno valutati su Scenario B, non sul baseline.
