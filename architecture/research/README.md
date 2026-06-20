@@ -22,6 +22,7 @@ problema, solo una spiegazione.
 | A-002 | legalIntents ricalcolato integralmente a ogni passo (performance) | aperto |
 | A-003 | il simulatore sonda il turno invece di conoscerlo | aperto |
 | A-005 | lo scenario baseline (cardsPerPlayer=2) rende irraggiungibile per costruzione qualunque meccanica che richieda ≥3 carte della stessa specie in mano (es. contratti di collezione) | osservato — risolto creando uno scenario affiancato, non modificando il baseline |
+| A-006 | il criterio di greedy-stars non è "stelle" ma "stelle, poi ordine fisico nel mazzo" — il `>` stretto in `reduce` lascia vincere il primo candidato a parità, e il mazzo (sampleDeck) non è mai rimescolato. Specie diverse a parità di stelle non sono trattate in modo equivalente: è una dipendenza accidentale dall'ordine di costruzione del mazzo, non dal criterio dichiarato dall'agente. Osservato in 0032 mentre si misurava il tasso di completamento del contratto S0 (0/1000 per greedy-stars, spiegato da questo) | aperto — non toccare: la batteria è congelata |
 
 ## hypotheses/ — cosa pensiamo lo spieghi
 
