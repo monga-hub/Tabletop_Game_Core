@@ -1,0 +1,460 @@
+{
+  "commit": "0029",
+  "agent": "greedy-species",
+  "pairs": {
+    "c1|c4": {
+      "a": "c1",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c2|c4": {
+      "a": "c2",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c3|c4": {
+      "a": "c3",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c4|c5": {
+      "a": "c4",
+      "b": "c5",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c4|c6": {
+      "a": "c4",
+      "b": "c6",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c4|c7": {
+      "a": "c4",
+      "b": "c7",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c4|c8": {
+      "a": "c4",
+      "b": "c8",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c4|c9": {
+      "a": "c4",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c4": {
+      "a": "c10",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c4": {
+      "a": "c11",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c12|c4": {
+      "a": "c12",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c13|c4": {
+      "a": "c13",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c14|c4": {
+      "a": "c14",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c15|c4": {
+      "a": "c15",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c16|c4": {
+      "a": "c16",
+      "b": "c4",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c1|c8": {
+      "a": "c1",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c2|c8": {
+      "a": "c2",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c3|c8": {
+      "a": "c3",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c5|c8": {
+      "a": "c5",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c6|c8": {
+      "a": "c6",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c7|c8": {
+      "a": "c7",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c8|c9": {
+      "a": "c8",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c8": {
+      "a": "c10",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c8": {
+      "a": "c11",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c12|c8": {
+      "a": "c12",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c13|c8": {
+      "a": "c13",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c14|c8": {
+      "a": "c14",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c15|c8": {
+      "a": "c15",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c16|c8": {
+      "a": "c16",
+      "b": "c8",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c1|c12": {
+      "a": "c1",
+      "b": "c12",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c12|c2": {
+      "a": "c12",
+      "b": "c2",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c3": {
+      "a": "c12",
+      "b": "c3",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c5": {
+      "a": "c12",
+      "b": "c5",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c6": {
+      "a": "c12",
+      "b": "c6",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c7": {
+      "a": "c12",
+      "b": "c7",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c9": {
+      "a": "c12",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c12": {
+      "a": "c10",
+      "b": "c12",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c12": {
+      "a": "c11",
+      "b": "c12",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c12|c13": {
+      "a": "c12",
+      "b": "c13",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c14": {
+      "a": "c12",
+      "b": "c14",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c15": {
+      "a": "c12",
+      "b": "c15",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c12|c16": {
+      "a": "c12",
+      "b": "c16",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c1|c16": {
+      "a": "c1",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c16|c2": {
+      "a": "c16",
+      "b": "c2",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c16|c3": {
+      "a": "c16",
+      "b": "c3",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c16|c5": {
+      "a": "c16",
+      "b": "c5",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c16|c6": {
+      "a": "c16",
+      "b": "c6",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c16|c7": {
+      "a": "c16",
+      "b": "c7",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c16|c9": {
+      "a": "c16",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c16": {
+      "a": "c10",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c16": {
+      "a": "c11",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c13|c16": {
+      "a": "c13",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c14|c16": {
+      "a": "c14",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c15|c16": {
+      "a": "c15",
+      "b": "c16",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c1|c3": {
+      "a": "c1",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c2|c3": {
+      "a": "c2",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c3|c5": {
+      "a": "c3",
+      "b": "c5",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c3|c6": {
+      "a": "c3",
+      "b": "c6",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c3|c7": {
+      "a": "c3",
+      "b": "c7",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c3|c9": {
+      "a": "c3",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c3": {
+      "a": "c10",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c3": {
+      "a": "c11",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c13|c3": {
+      "a": "c13",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c14|c3": {
+      "a": "c14",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c15|c3": {
+      "a": "c15",
+      "b": "c3",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c1|c7": {
+      "a": "c1",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c2|c7": {
+      "a": "c2",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c5|c7": {
+      "a": "c5",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c6|c7": {
+      "a": "c6",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c7|c9": {
+      "a": "c7",
+      "b": "c9",
+      "aOverB": 1000,
+      "bOverA": 0
+    },
+    "c10|c7": {
+      "a": "c10",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c11|c7": {
+      "a": "c11",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c13|c7": {
+      "a": "c13",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c14|c7": {
+      "a": "c14",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    },
+    "c15|c7": {
+      "a": "c15",
+      "b": "c7",
+      "aOverB": 0,
+      "bOverA": 1000
+    }
+  },
+  "totalOrderViolations": 0,
+  "contestedPairs": 0,
+  "observedPairs": 75,
+  "isTotalOrder": true
+}
