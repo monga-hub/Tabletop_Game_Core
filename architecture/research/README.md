@@ -16,6 +16,7 @@ all'architettura. Nessuna idea salta direttamente a "è vero".
 | H-001 | Lo stato è un ruolo di projection (decision context) | corroborata, non promossa |
 | H-002 | Gli eventi registrano fatti, non ricostruzioni | corroborata |
 | H-003 | Nessuna astrazione prima di due usi (principio #7) | corroborata |
+| H-004 | Le zone-insieme sono projection dell'''ownership | corroborata con confine |
 
 Quando una ipotesi è corroborata su abbastanza casi diversi (incluse aste,
 multiplayer, persistenza, AI su molte partite), si valuta la promozione a
