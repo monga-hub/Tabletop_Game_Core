@@ -16,6 +16,11 @@ problema, solo una spiegazione.
 | ID | Attrito | Status |
 |----|---------|--------|
 | A-001 | reduce duplica la logica di apply per le conseguenze derivate | aperto |
+| A-002 | legalIntents ricalcolato integralmente a ogni passo (performance) | aperto |
+| A-003 | il simulatore sonda chi non può muovere (turno non esposto) | aperto |
+| A-004 | validate non sa enumerare le mosse legali | aperto |
+| A-002 | legalIntents ricalcolato integralmente a ogni passo (performance) | aperto |
+| A-003 | il simulatore sonda il turno invece di conoscerlo | aperto |
 
 ## hypotheses/ — cosa pensiamo lo spieghi
 

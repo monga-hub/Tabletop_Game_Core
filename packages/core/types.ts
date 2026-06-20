@@ -53,6 +53,16 @@ export interface System {
   reduce(state: GameState, intent: Intent): EventDraft[];
   /** applica un singolo Event allo stato. DEVE essere puro e deterministico. */
   apply(state: GameState, event: GameEvent): GameState;
+  /**
+   * OPZIONALE — il duale di validate. Dato uno stato e un agente, enumera gli
+   * Intent legali che quell'agente può proporre ORA. validate risponde "questo
+   * intent è valido?"; legalIntents risponde "quali intent sono validi?".
+   * Serve ai simulatori e agli agenti: il dominio dice quali mosse esistono,
+   * l'agente sceglie. Se assente, il System non partecipa alla generazione di
+   * mosse (es. system che gestiscono solo eventi derivati).
+   * Mette pressione a H-001: generare le mosse richiede il decision context.
+   */
+  legalIntents?(state: GameState, agentId: string): Intent[];
 }
 
 /** Un Event prima che il motore gli assegni id e causedBy. */

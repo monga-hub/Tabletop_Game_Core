@@ -110,4 +110,18 @@ export const PescariaDraftPickSystem: System = {
     }
     return state;
   },
+  // il DUALE di validate: quali pick può fare l'agente ora?
+  // Solo il giocatore di turno, una mossa per ogni carta disponibile.
+  legalIntents(state: GameState, agentId: string): Intent[] {
+    const d = draft(state);
+    if (!d) return [];
+    if ((d as { completed?: boolean }).completed) return []; // draft finito: nessuna mossa
+    if (d.order[d.currentPlayer] !== agentId) return []; // non è il tuo turno
+    return d.availableCards.map((card) => ({
+      type: "pescaria.draft.pick",
+      agentId,
+      payload: { playerId: agentId, cardId: card },
+    }));
+  },
+
 };

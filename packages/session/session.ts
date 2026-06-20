@@ -63,6 +63,34 @@ export class Session {
   }
 
   /**
+   * Il duale di submit: enumera tutti gli Intent legali per un agente ORA,
+   * aggregando i legalIntents di ogni System. Il simulatore e gli agenti usano
+   * questo: il dominio dice quali mosse esistono, l'agente sceglie. La Session
+   * non conosce le regole — chiede ai System.
+   */
+  legalIntents(agentId: string): Intent[] {
+    const state = this.getState();
+    const out: Intent[] = [];
+    for (const sys of this.systems) {
+      if (sys.legalIntents) out.push(...sys.legalIntents(state, agentId));
+    }
+    return out;
+  }
+
+  /**
+   * Il duale di validate, aggregato su tutti i System: quali Intent può
+   * proporre questo agente ORA. Il simulatore e gli agenti chiedono questo;
+   * non conoscono le regole, le conosce il dominio.
+   */
+  legalIntents(agentId: string): Intent[] {
+    const out: Intent[] = [];
+    for (const sys of this.systems) {
+      if (sys.legalIntents) out.push(...sys.legalIntents(this.state, agentId));
+    }
+    return out;
+  }
+
+  /**
    * Il ciclo del motore.
    * Intent → validate (dai System) → emit Event → apply → osservano le Projection.
    * Un Intent rifiutato è anch'esso un fatto: va nel log come core.intent.rejected.
