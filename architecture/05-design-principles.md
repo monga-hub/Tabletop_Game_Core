@@ -56,3 +56,20 @@ violando.
 di non poter essere un modulo né una projection. È una soglia
 deliberatamente alta. Protegge il Core dal diventare il contenitore dove
 finisce ogni nuova idea.*
+
+---
+
+## Invariante della Session (aggiunta in 0015)
+
+**Una Session deve poter essere ricostruita esclusivamente dal proprio Event Log.**
+Se esiste qualunque stato che non può essere ricostruito dal log, quello stato
+non appartiene alla Session.
+
+Conseguenza pratica imposta dal codice: il costruttore della Session non accetta
+stato iniziale. Una Session nasce vuota e cresce per `submit()`, oppure si
+ricostruisce con `Session.fromLog()`. Non esiste modo di iniettare stato
+arbitrario — l'invariante è vera per costruzione, non per disciplina.
+
+Corollario: *collaborano i fatti, non i System.* Un System non conosce gli altri
+System; conosce solo i fatti (eventi e stato) e il loro linguaggio. Sostituire il
+produttore di un fatto non rompe i suoi consumatori.
