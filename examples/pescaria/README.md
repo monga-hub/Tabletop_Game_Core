@@ -91,3 +91,32 @@ distinzione tra i due non è ancora un requisito. Diventerà un'estensione
 architetturale rilevante il giorno in cui il comportamento di un
 componente dipenderà davvero dalla visibilità parziale dello stato — non
 prima.
+
+## Biforcazione del modello della carta (0035)
+
+Da quando esiste il regolamento canonico, il `CardModel` porta due
+rappresentazioni della carta con scopi distinti, e per ora convivono:
+
+- **Rappresentazione sperimentale** (`species`, `stars`): non descrive la
+  carta del regolamento. Sono assi introdotti per studiare il draft — hanno
+  congelato la batteria di agenti e prodotto le osservazioni di 0027-0034.
+  Nel regolamento la carta non "è" di una specie: è un Cliente il cui
+  contratto *richiede* certi pesci (gettoni nel sacchetto). `species`/`stars`
+  sono strumenti di laboratorio, non fatti di dominio.
+- **Rappresentazione di dominio** (`auctionValue`): il Valore d'Asta del
+  regolamento (cap. 5), uno dei quattro attributi distinti della carta
+  (Contratto, Ricompensa, Valore d'Asta, Categoria). Per ora con valori di
+  laboratorio, non quelli reali delle 99 carte.
+
+Questa non è una contraddizione da risolvere fondendo i due, ed è la ragione
+per cui NON si tocca `stars`/`species` ora: rimuoverli prima che un modello
+di dominio sia abbastanza ricco da sostituirli distruggerebbe la continuità
+sperimentale (stesso principio già applicato a benchmark e agenti — non si
+rimuove uno strumento prima che esista il suo sostituto). La domanda "species
+e stars sono ancora necessari?" è prematura finché il modello di dominio non
+sarà completo.
+
+Conseguenza su S0 (0032): il contratto diagnostico "3 carte di specie
+sardina" era costruito sull'asse sperimentale, non sul regolamento (dove non
+esistono "carte sardina"). Era dichiarato un contratto di laboratorio, ha
+risposto alla sua domanda, e resta un esperimento storico: non va riscritto.

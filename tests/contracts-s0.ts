@@ -11,11 +11,11 @@ console.log("TEST — Contracts S0 (3 Sardine -> 15 punti, consuma le carte)\n")
 
 // --- 1) la funzione pura, isolata dal motore ---
 const registry: Card[] = [
-  { id: "s1", species: "sardina", stars: 1 },
-  { id: "s2", species: "sardina", stars: 2 },
-  { id: "s3", species: "sardina", stars: 3 },
-  { id: "s4", species: "sardina", stars: 4 },
-  { id: "t1", species: "tonno", stars: 1 },
+  { id: "s1", species: "sardina", stars: 1, auctionValue: 1 },
+  { id: "s2", species: "sardina", stars: 2, auctionValue: 1 },
+  { id: "s3", species: "sardina", stars: 3, auctionValue: 1 },
+  { id: "s4", species: "sardina", stars: 4, auctionValue: 1 },
+  { id: "t1", species: "tonno", stars: 1, auctionValue: 1 },
 ];
 const r1 = evaluateContractsS0({ a: ["s1", "s2", "s3", "t1"], b: ["s1", "t1"] }, registry);
 ok(r1.scores["a"] === 15, "3 sardine in mano -> 15 punti");
@@ -29,12 +29,12 @@ ok(r2.scores["c"] === 15, "il completamento resta singolo: 15 punti, non di più
 
 // --- 2) integrazione: draft.completed -> hands -> contracts, nello stesso passo ---
 const deck: Card[] = [
-  { id: "A", species: "sardina", stars: 1 },
-  { id: "B", species: "sardina", stars: 2 },
-  { id: "C", species: "sardina", stars: 3 },
-  { id: "D", species: "tonno", stars: 1 },
-  { id: "E", species: "branzino", stars: 1 },
-  { id: "F", species: "orata", stars: 1 },
+  { id: "A", species: "sardina", stars: 1, auctionValue: 1 },
+  { id: "B", species: "sardina", stars: 2, auctionValue: 1 },
+  { id: "C", species: "sardina", stars: 3, auctionValue: 1 },
+  { id: "D", species: "tonno", stars: 1, auctionValue: 1 },
+  { id: "E", species: "branzino", stars: 1, auctionValue: 1 },
+  { id: "F", species: "orata", stars: 1, auctionValue: 1 },
 ];
 const systems = [PescariaDraftSystem, PescariaDraftPickSystem];
 const s = new Session({ systems, seed: 7 });
