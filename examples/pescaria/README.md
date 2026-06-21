@@ -53,7 +53,45 @@ anticipare una direzione di design ancora aperta (vedi
 `architecture/research/README.md` per la disciplina attrito → ipotesi →
 esperimento che governa questo).
 
+## Criterio di lavoro: cosa entra in una trasformazione
+
+Regola di lavoro concreta per questo progetto (non un principio generale
+del laboratorio). A ogni commit, per ogni informazione che il regolamento
+fornisce sulla fase in corso, farsi questa domanda:
+
+> Questa informazione modifica il risultato della trasformazione di stato
+> che sto implementando ORA? Se invertissi/omettessi questa informazione,
+> lo stato finale cambierebbe?
+
+- **Sì** → entra nel commit.
+- **No** → appartiene al dominio, ma non a questa trasformazione. Non viene
+  negata né dimenticata: aspetta il commit in cui diventerà causalmente
+  rilevante (di solito quando un'altra trasformazione dipenderà da essa —
+  es. l'ordine di turno diventerà rilevante quando un effetto dovrà
+  applicarsi "al giocatore successivo", o quando un pareggio dovrà essere
+  risolto da chi è più vicino al primo giocatore).
+
+Esempio applicato (0034, `__hands__ → __offers__`): "la carta lascia la
+mano" cambia il risultato → entra. "La carta è giocata coperta" e "l'ordine
+è orario" non cambiano lo stato finale di QUESTA trasformazione → non
+entrano oggi, anche se sono fatti del regolamento già noti e non in
+discussione.
+
 ## Stato
 
 Decisione presa. Non è un'ipotesi né un attrito: è una scelta di dominio,
 con l'autorità di chi progetta Pescaria, non del simulatore.
+
+## Osservazione progettuale (non attrito, non ipotesi)
+
+Oggi il simulatore modella lo stato completo della partita, non la
+conoscenza dei giocatori. Termini del regolamento come "coperta" (la carta
+puntata all'asta) descrivono un vincolo sul processo decisionale — nessun
+giocatore deve poter rivedere la propria scelta dopo aver visto le altre —
+non una proprietà che lo stato interno deve portare. Finché nessun agente
+osserva uno stato parziale (`agent.observe`, `policy.visibleState`), il
+mondo simulato e ciò che un agente può conoscere di esso coincidono, e la
+distinzione tra i due non è ancora un requisito. Diventerà un'estensione
+architetturale rilevante il giorno in cui il comportamento di un
+componente dipenderà davvero dalla visibilità parziale dello stato — non
+prima.
