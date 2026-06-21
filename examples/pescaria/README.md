@@ -1,52 +1,48 @@
 # Pescaria — riferimento di dominio
 
 Decisione di dominio (non di architettura): quale regolamento di Pescaria
-il simulatore rende eseguibile, quando esistono più versioni del documento.
+il simulatore rende eseguibile.
 
-## La decisione
+## La decisione (corrente)
 
-**Struttura della partita → Regolamento V1.**
-**Contenuto delle carte e delle Migliorie → Regolamento V3.**
+**Fonte canonica unica: `rules/regolamento.md`** (riconciliazione 2026).
 
-Sono due cose distinte e si prendono da fonti diverse, intenzionalmente.
+È un documento unico che risolve le divergenze tra le versioni precedenti.
+Il simulatore rende eseguibile quel testo, un fatto alla volta. Quando un
+commit dichiara di rendere eseguibile un "fatto già deciso", il fatto si
+trova lì.
 
-## Cosa viene dalla V1 (struttura)
+Ciò che il regolamento non menziona resta fuori dal simulatore per assenza,
+non per decisione separata. In particolare le Carte Serenissima e il sistema
+d'asta a esse associato non compaiono nel 2026: restano fuori scope.
 
-Il flusso della partita è quello della V1:
+### Storia della decisione (superata, conservata per tracciabilità)
+
+Prima del 2026 la decisione era "struttura della partita dalla V1, contenuto
+di carte e Migliorie dalla V3", perché esistevano due documenti distinti e
+non riconciliati. Il regolamento 2026 li unifica, quindi quella divisione
+non è più necessaria. I commit fino a 0034 sono stati fatti sotto la vecchia
+decisione e restano validi: il 2026 conferma la struttura che stavano già
+implementando (4 giornate, fasi Pesca → Aste → Mercato → Fine Giornata).
+
+## Struttura della partita (dal regolamento canonico)
 
 ```
-Setup → Pesca dei pesci → Draft delle carte → Aste → Mercato → Bilancia → Nuova giornata
+Setup → Pesca del Mattino → Aste → Mercato → Fine Giornata → (×4 giornate)
 ```
+
+La Pesca del Mattino comprende Rifornimento (pesca) e Draft. La partita dura
+4 Giornate.
 
 Conseguenza: tutto il lavoro già fatto (Draft, Hands, Contracts S0, agenti,
 benchmark, replay) resta valido. Non va ripensato per questa decisione.
 
-## Cosa viene dalla V3 (contenuto)
-
-- struttura delle Carte Cliente/Miglioria;
-- le Migliorie e le loro categorie (Pesca, Aste, Clienti, Bilancia);
-- gli effetti aggiornati delle Migliorie;
-- il bilanciamento delle carte.
-
-## Cosa NON viene dalla V3
-
-Esplicitamente fuori dall'oggetto del simulatore, per ora:
-
-- le Carte Serenissima;
-- il nuovo sistema d'asta a puntata singola con scambio della Serenissima;
-- il ciclo continuo delle aste (un'asta dopo l'altra, senza fasi separate);
-- l'eliminazione del draft.
-
-Questa è una direzione di design diversa rispetto a quella che il simulatore
-sta rendendo eseguibile. Potrebbe diventarlo in futuro, ma non è una decisione
-presa oggi: non va anticipata nel codice.
-
 ## Conseguenza pratica per i prossimi commit
 
-La domanda guida non è più "quale meccanica implementiamo", ma:
+La domanda guida non è "quale meccanica implementiamo", ma:
 
-> Qual è il prossimo fatto del regolamento V1 (struttura) — con il contenuto
-> della V3 dove applicabile — che il simulatore non sa ancora eseguire?
+> Qual è la prossima trasformazione di stato prescritta da
+> `rules/regolamento.md` che il simulatore non sa ancora eseguire?
 
 Ogni commit continua a rendere eseguibile un fatto già deciso, non ad
 anticipare una direzione di design ancora aperta (vedi
