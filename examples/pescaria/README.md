@@ -97,12 +97,14 @@ prima.
 Da quando esiste il regolamento canonico, il `CardModel` porta due
 rappresentazioni della carta con scopi distinti, e per ora convivono:
 
-- **Rappresentazione sperimentale** (`species`, `stars`): non descrive la
-  carta del regolamento. Sono assi introdotti per studiare il draft — hanno
-  congelato la batteria di agenti e prodotto le osservazioni di 0027-0034.
-  Nel regolamento la carta non "è" di una specie: è un Cliente il cui
-  contratto *richiede* certi pesci (gettoni nel sacchetto). `species`/`stars`
-  sono strumenti di laboratorio, non fatti di dominio.
+- **Rappresentazione sperimentale e parziale** (`species`, `stars`): non
+  descrive *per intero* la carta del regolamento, ma non per questo è falsa —
+  è parziale. Sono assi introdotti per studiare il draft — hanno congelato la
+  batteria di agenti e prodotto le osservazioni di 0027-0034. Nel regolamento
+  la carta non "è" di una specie: è un Cliente il cui contratto *richiede*
+  certi pesci (gettoni nel sacchetto). `species`/`stars` sono strumenti di
+  laboratorio: finché rispondono bene alla domanda per cui esistono (far
+  emergere preferenze negli agenti), non c'è motivo di rimuoverli.
 - **Rappresentazione di dominio** (`auctionValue`): il Valore d'Asta del
   regolamento (cap. 5), uno dei quattro attributi distinti della carta
   (Contratto, Ricompensa, Valore d'Asta, Categoria). Per ora con valori di
