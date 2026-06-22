@@ -184,3 +184,33 @@ Conseguenza su S0 (0032): il contratto diagnostico "3 carte di specie
 sardina" era costruito sull'asse sperimentale, non sul regolamento (dove non
 esistono "carte sardina"). Era dichiarato un contratto di laboratorio, ha
 risposto alla sua domanda, e resta un esperimento storico: non va riscritto.
+
+## Due dataset distinti (dal 0037)
+
+Dal 0037 il repository contiene due dataset di carte, con ruoli diversi, che
+NON si sostituiscono a vicenda:
+
+- **Sintetico** (`model/card.ts`, `sampleDeck()`, tipo `Card`): `species` e
+  `stars` sono assi costruiti per gli agenti. Serve ai benchmark del
+  **framework** (ordering, sensitivity) e alla batteria congelata. Misura
+  proprietà del simulatore, non del gioco. Resta invariato.
+- **Reale** (`cards/deck-v3.2.json`, `realDeck()`, tipo `RealCard`): le 100
+  carte vere di Pescaria (da MAZZO_PESCARIA_DIC25), con requirements, reward,
+  Valore d'Asta e miglioria reali. Serve agli esperimenti su **Pescaria**
+  (conflitti tra contratti, distribuzione migliorie, ecc.).
+
+Sono due esperimenti diversi, non due versioni dello stesso. Gli agenti della
+batteria girano sul sintetico (sono tarati su `stars`/`species`); non giocano
+ancora sul mazzo reale, perché sono agenti che verificano proprietà del
+framework, non agenti che giocano a Pescaria. Questa è una separazione, non un
+passaggio temporaneo: i due alberi (framework+sintetico / Pescaria+reale)
+convivono.
+
+Il mazzo reale è versionato come dato: oggi v3.2. Quando cambierà sarà
+deck-v3.3.json. Il bilanciamento non è congelato dalla dimensione del mazzo
+(sono 100 carte vere, non un sottoinsieme scelto) ma dalla versione del file.
+
+Transizione di fase (0037): fino al 0036 ogni commit aggiungeva meccanica
+(struttura). Dal 0037 entrano i contenuti del gioco. Il framework non è più il
+collo di bottiglia: da qui in avanti è il design di Pescaria a guidare la
+maggior parte dei commit.
