@@ -2,12 +2,21 @@
 
 ## Domanda
 
-Nel mazzo 2026 esistono stati in cui l'insieme dei contratti completabili
-dipende dall'ordine di risoluzione?
+Il dataset 2026 **ammette** stati conflittuali? Cioè: esistono stati
+**costruibili** sul dataset in cui l'insieme dei contratti completati dipende
+dall'ordine di risoluzione?
 
-(Domanda di esistenza, binaria. NON "quanto spesso il gioco li genera":
-quella richiede mani e banchi prodotti dal gioco reale, che la pipeline non
-genera ancora.)
+Il verbo è "ammette", non "contiene" né "genera": lo stato è costruibile sul
+dataset, non prodotto dal gioco. La domanda incorpora il metodo
+(stati costruiti per campionamento) di proposito, così resta distinta dal
+futuro esperimento "il GIOCO quanto spesso genera stati conflittuali?", che
+avrà la stessa apparenza ma metodo e significato diversi.
+
+Due classi di esperimento, da non confondere:
+- **esistenza** (questo): la risposta è sì/no.
+- **distribuzione** (futuro): la risposta è una misura ("quanto spesso durante
+  una partita"). Non ancora possibile: richiede mani e banchi prodotti dal
+  gioco reale (draft + asta).
 
 ## Metodologia
 
@@ -22,14 +31,21 @@ genera ancora.)
 
 ## Osservazione
 
-Sì: esistono stati conflittuali nel mazzo 2026. Su 100.000 campioni arbitrari,
-38.441 erano conflittuali. Un esempio: mano {97, 19, 11, 35} con banco {polpo:3,
-gambero:4, mollusco:4, branzino:3, sardina:2}.
+Il risultato è: **sì** — il dataset 2026 ammette stati conflittuali.
+
+Il numero (38.441 su 100.000 campioni arbitrari) **non è il risultato**: è un
+artefatto del protocollo. Serve solo a poter rispondere "sì" con confidenza —
+perché il fenomeno è costruibile in molti modi, non per un singolo esempio
+fortunato. Se i campioni conflittuali fossero stati 1, la risposta sarebbe
+comunque "sì"; se 0, "no". È la soglia 1, non la frazione, a decidere.
+
+Un esempio: mano {97, 19, 11, 35} con banco {polpo:3, gambero:4, mollusco:4,
+branzino:3, sardina:2}.
 
 La frazione 38.44% è **sul campione arbitrario**, e NON è il tasso del gioco:
 le mani e i banchi qui non sono prodotti dal draft e dall'asta reali, ma
-estratti a caso. Il numero misura il campionamento scelto, non Pescaria. Per
-questo l'unica lettura legittima oggi è binaria: il fenomeno *esiste*.
+estratti a caso. Darle peso significherebbe leggerla come una distribuzione,
+che è la domanda che questo esperimento NON pone.
 
 ## Interpretazione
 

@@ -8,17 +8,31 @@
 // dataset fissato, una procedura ripetibile, un risultato osservato.
 //
 // DOMANDA
-//   Nel mazzo 2026 esistono stati in cui l'insieme dei contratti completabili
-//   dipende dall'ordine di risoluzione?
+//   Il dataset 2026 AMMETTE stati conflittuali? Cioè: esistono stati
+//   COSTRUIBILI sul dataset in cui l'insieme dei contratti completati dipende
+//   dall'ordine di risoluzione?
 //
-// È una domanda di ESISTENZA (binaria), non di densità. "Quanto spesso il
-// GIOCO genera questi stati" non è ancora misurabile: richiederebbe mani e
-// banchi prodotti dal gioco reale (draft + asta), che la pipeline non genera
-// ancora. Qui le mani e i banchi sono campionati in modo DICHIARATAMENTE
-// ARBITRARIO: servono solo a cercare SE almeno una configurazione conflittuale
-// esista nel mazzo reale. Il campionamento arbitrario è onesto per una domanda
-// di esistenza (basta trovarne uno); sarebbe disonesto per una domanda di
-// densità (il numero dipenderebbe dal campionamento, non dal gioco).
+// Il verbo è "ammette", non "contiene" né "genera". Lo stato è COSTRUIBILE sul
+// dataset, non prodotto dal gioco. La domanda incorpora il metodo (stati
+// costruiti per campionamento), così resta distinta dal futuro esperimento
+// "il GIOCO quanto spesso genera stati conflittuali?" — che avrà la stessa
+// apparenza ma metodo e significato diversi. Confonderli (stessa domanda, due
+// metodi) sarebbe l'equivoco peggiore.
+//
+// È una domanda di ESISTENZA (binaria), non di DISTRIBUZIONE. Sono due classi
+// di esperimento diverse: esistenza -> sì/no; distribuzione -> una misura.
+// "Quanto spesso il GIOCO genera questi stati" (distribuzione) non è ancora
+// misurabile: richiederebbe mani e banchi prodotti dal gioco reale (draft +
+// asta), che la pipeline non genera ancora.
+//
+// Le mani e i banchi sono campionati in modo DICHIARATAMENTE ARBITRARIO:
+// servono solo a cercare SE almeno una configurazione conflittuale sia
+// costruibile. Il campionamento arbitrario è onesto per una domanda di
+// esistenza (basta trovarne una); sarebbe disonesto per una di distribuzione
+// (il numero dipenderebbe dal campionamento, non dal gioco). Per questo il
+// conteggio NON è il risultato: il risultato è "sì". Il numero è solo il
+// motivo per cui si risponde "sì" con confidenza, invece che per un singolo
+// esempio fortunato.
 //
 // METODOLOGIA
 //   - dataset fissato: mazzo 2026 (realDeck()).
@@ -95,7 +109,7 @@ for (let i = 0; i < SAMPLES; i++) {
 
 const report = {
   experiment: "0040-contract-conflicts",
-  question: "Nel mazzo 2026 esistono stati in cui l'insieme dei contratti completabili dipende dall'ordine?",
+  question: "Il dataset 2026 ammette stati conflittuali (costruibili sul dataset)?",
   deckVersion: realDeckVersion(),
   method: {
     samples: SAMPLES, handSize: HAND_SIZE, maxFishPerSpecies: MAX_FISH,

@@ -1,6 +1,6 @@
 {
   "experiment": "0040-contract-conflicts",
-  "question": "Nel mazzo 2026 esistono stati in cui l'insieme dei contratti completabili dipende dall'ordine?",
+  "question": "Il dataset 2026 ammette stati conflittuali (costruibili sul dataset)?",
   "deckVersion": "2026",
   "method": {
     "samples": 100000,
