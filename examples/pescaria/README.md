@@ -49,6 +49,27 @@ anticipare una direzione di design ancora aperta (vedi
 `architecture/research/README.md` per la disciplina attrito → ipotesi →
 esperimento che governa questo).
 
+### Procedura di lavoro (per Pescaria — supportata dai commit 0030–0035)
+
+Per implementare nuove meccaniche di Pescaria:
+
+1. apri `rules/regolamento.md`;
+2. individua il primo verbo che prende in ingresso uno stato **già
+   rappresentato** dal simulatore (es. `__auctionRanking__`, `__hands__`);
+3. ignora tutto il resto;
+4. implementa esclusivamente quella trasformazione.
+
+Questa procedura descrive fedelmente cosa è stato fatto dal 0030 al 0035,
+anche quando non era ancora esplicitata. **Resta locale a Pescaria di
+proposito**: è supportata da un solo progetto (sei commit consecutivi, stesso
+gioco, stesso regolamento già abbastanza lineare). Non è ancora una regola del
+protocollo generale dell'agente (`CLAUDE.md`), perché non sappiamo se un
+secondo progetto — con un regolamento meno lineare, o dove le trasformazioni
+nascono prima del regolamento — richiederà la stessa disciplina. Si promuoverà
+a regola generale solo il giorno in cui un secondo progetto, spontaneamente,
+ci porterà a lavorare di nuovo per verbi del regolamento — non perché sembri
+una buona idea.
+
 ## Criterio di lavoro: cosa entra in una trasformazione
 
 Regola di lavoro concreta per questo progetto (non un principio generale
