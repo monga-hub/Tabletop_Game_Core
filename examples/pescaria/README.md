@@ -106,6 +106,15 @@ cambiare (seconda asta). NON sono entrati: rilancio in Ducati (nessun agente
 può rilanciare, vale 0 per tutti), bonus Esperienza (miglioria assente),
 acquisto del pesce (trasformazione successiva).
 
+Esempio applicato (0036, `__auctionRanking__ + __stoccaggio__ → __banks__`):
+il vincitore prende il lotto → entra (movimento di risorsa puro). NON entrano:
+i Ducati e il pagamento (il movimento del pesce è distinto dal pagamento, come
+il rilancio era distinto dalla determinazione del vincitore), la scelta di
+"quanti pesci" (introdurrebbe un Intent e toccherebbe la batteria congelata —
+semplificazione dichiarata: il vincitore prende tutto), gli altri acquirenti,
+la capienza del Banco, gli scarti. Il Banco nasce come stato qui, residuo
+della trasformazione, non introdotto in anticipo.
+
 ## Stato
 
 Decisione presa. Non è un'ipotesi né un attrito: è una scelta di dominio,
