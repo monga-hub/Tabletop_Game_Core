@@ -1,0 +1,32 @@
+{
+  "experiment": "0040-contract-conflicts",
+  "question": "Nel mazzo 2026 esistono stati in cui l'insieme dei contratti completabili dipende dall'ordine?",
+  "deckVersion": "2026",
+  "method": {
+    "samples": 100000,
+    "handSize": 4,
+    "maxFishPerSpecies": 4,
+    "conflictDefinition": "dominio: >=2 insiemi-completati al variare dell'ordine (tutte le permutazioni)",
+    "sampling": "arbitrario (mani+banchi casuali) — valido SOLO per la domanda di esistenza, non per la densità"
+  },
+  "result": {
+    "exists": true,
+    "conflictualSamples": 38441,
+    "fractionOnArbitrarySample": 0.38441,
+    "firstExample": {
+      "hand": [
+        97,
+        19,
+        11,
+        35
+      ],
+      "bank": {
+        "polpo": 3,
+        "gambero": 4,
+        "mollusco": 4,
+        "branzino": 3,
+        "sardina": 2
+      }
+    }
+  }
+}
