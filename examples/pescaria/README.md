@@ -73,6 +73,18 @@ mano" cambia il risultato → entra. "La carta è giocata coperta" e "l'ordine
 entrano oggi, anche se sono fatti del regolamento già noti e non in
 discussione.
 
+Esempio applicato (0035, `__offers__ + __draft__.order → __auctionRanking__`):
+l'ordine di turno — rimandato in 0034 — entra ORA, perché la risoluzione dei
+pari ("vince chi è più avanti nell'ordine partendo dal Primo Giocatore") non è
+definibile senza di esso. È il caso previsto al 0034: un fatto rimandato entra
+quando un'altra trasformazione comincia a dipenderne. Non si è introdotto uno
+stato `__firstPlayer__` separato: per la PRIMA asta della giornata il Primo
+Giocatore è ancora quello iniziale, e `__draft__.order` — che parte da lui — lo
+rappresenta già. Il segnalino entrerà nello stato solo nel commit in cui dovrà
+cambiare (seconda asta). NON sono entrati: rilancio in Ducati (nessun agente
+può rilanciare, vale 0 per tutti), bonus Esperienza (miglioria assente),
+acquisto del pesce (trasformazione successiva).
+
 ## Stato
 
 Decisione presa. Non è un'ipotesi né un attrito: è una scelta di dominio,
