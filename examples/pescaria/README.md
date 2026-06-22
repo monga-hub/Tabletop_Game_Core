@@ -115,6 +115,26 @@ semplificazione dichiarata: il vincitore prende tutto), gli altri acquirenti,
 la capienza del Banco, gli scarti. Il Banco nasce come stato qui, residuo
 della trasformazione, non introdotto in anticipo.
 
+## Invariante di dominio: conservazione del pesce
+
+Il pesce non viene creato né distrutto durante la partita: cambia solo
+collocazione. È una proprietà di Pescaria, vera indipendentemente da come il
+simulatore la verifica e da qualunque semplificazione di un singolo commit.
+
+Oggi la somma è `sacchetto + stoccaggio + banchi = 100`. La forma si
+allargherà man mano che il pesce acquisisce nuove collocazioni (Cesta,
+scarti, contratti consumati): `sacchetto + stoccaggio + banchi + ceste +
+scarti + ... = 100`. L'invariante non cambia — cambia la sua rappresentazione,
+perché il dominio rappresentato diventa più ricco.
+
+Nota implementativa (deliberata): non esiste un "test dell'invariante" né un
+helper `assertFishConservation`. Esiste un test dell'acquisto (0036,
+`tests/purchase.ts`) che *incidentalmente* contiene un controllo di
+conservazione. Responsabilità locale, una sola occorrenza: l'astrazione
+(funzione/helper/categoria di test dedicata) nascerà solo quando una seconda
+trasformazione del pesce (Cesta, scarti) conterrà lo stesso controllo — non
+prima. Stessa disciplina "due casi prima dell'astrazione" applicata ai test.
+
 ## Stato
 
 Decisione presa. Non è un'ipotesi né un attrito: è una scelta di dominio,
