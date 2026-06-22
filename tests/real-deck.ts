@@ -9,8 +9,8 @@ console.log("TEST — Real deck (0037: il mazzo reale come dataset di dominio)\n
 
 const deck = realDeck();
 
-ok(deck.length === 100, "il mazzo reale ha 100 carte");
-ok(realDeckVersion() === "3.2", "versione del dataset: 3.2");
+ok(deck.length === 97, "il mazzo reale (2026) ha 97 carte");
+ok(realDeckVersion() === "2026", "versione del dataset: 2026");
 
 // ogni carta ha attributi validi
 const validFish = new Set(FISH_SPECIES);
@@ -31,7 +31,7 @@ ok(allFishOk, "ogni pesce richiesto è un FishSpecies valido del dominio");
 
 // id univoci
 const ids = new Set(deck.map((c) => c.id));
-ok(ids.size === 100, "tutti gli id sono univoci");
+ok(ids.size === 97, "tutti gli id sono univoci");
 
 // immutabilità: due chiamate danno copie indipendenti
 const d1 = realDeck();
@@ -50,5 +50,13 @@ const fishCount: Record<string, number> = {};
 for (const c of deck) for (const [sp, n] of Object.entries(c.requirements)) fishCount[sp] = (fishCount[sp] ?? 0) + n!;
 ok(FISH_SPECIES.every((sp) => (fishCount[sp] ?? 0) > 0), "tutte e 5 le specie compaiono tra i pesci richiesti");
 
+// archivio: la versione precedente resta caricabile (il simulatore studia
+// anche l'evoluzione del gioco, le versioni non si cancellano)
+import { realDeckArchived, archivedVersions } from "../examples/pescaria/cards/real-deck";
+ok(archivedVersions().includes("3.2"), "la versione 3.2 e' disponibile in archivio");
+const v32 = realDeckArchived("3.2");
+ok(v32.length === 100, "il mazzo archiviato v3.2 ha le sue 100 carte originali");
+ok(v32.length !== deck.length, "corrente (97) e archivio (100) sono dataset distinti: 3 carte rimosse nel 2026");
+
 console.log("");
-if (f === 0) { console.log("VERDE. Mazzo reale: 100 carte, dataset di dominio distinto dal sintetico."); process.exit(0); } else process.exit(1);
+if (f === 0) { console.log("VERDE. Mazzo reale 2026: 97 carte (corrente) + archivio v3.2, distinto dal sintetico."); process.exit(0); } else process.exit(1);

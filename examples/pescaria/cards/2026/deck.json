@@ -1,0 +1,1161 @@
+{
+  "version": "2026",
+  "source": "MAZZO_PESCARIA_2026",
+  "cards": [
+    {
+      "id": "r1",
+      "sourceId": 1,
+      "name": "Bacaro Risorto",
+      "auctionValue": 3,
+      "reward": 4,
+      "requirements": {
+        "sardina": 2
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r2",
+      "sourceId": 2,
+      "name": "Bacaro della Laguna",
+      "auctionValue": 2,
+      "reward": 3,
+      "requirements": {
+        "branzino": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r3",
+      "sourceId": 3,
+      "name": "La Perla Nera",
+      "auctionValue": 3,
+      "reward": 4,
+      "requirements": {
+        "mollusco": 1
+      },
+      "improvement": "⚖ Banco Equilibrato"
+    },
+    {
+      "id": "r4",
+      "sourceId": 4,
+      "name": "Osteria ai Pugni",
+      "auctionValue": 4,
+      "reward": 4,
+      "requirements": {
+        "gambero": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r5",
+      "sourceId": 5,
+      "name": "Le Tre Marie",
+      "auctionValue": 3,
+      "reward": 6,
+      "requirements": {
+        "branzino": 2
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r6",
+      "sourceId": 6,
+      "name": "Osteria Pescheria",
+      "auctionValue": 2,
+      "reward": 6,
+      "requirements": {
+        "sardina": 1,
+        "branzino": 1
+      },
+      "improvement": "⚖ Maestro Approvvigionamento"
+    },
+    {
+      "id": "r7",
+      "sourceId": 7,
+      "name": "Famiglia Badoer",
+      "auctionValue": 3,
+      "reward": 5,
+      "requirements": {
+        "polpo": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r8",
+      "sourceId": 8,
+      "name": "Osteria Ai Forni",
+      "auctionValue": 4,
+      "reward": 8,
+      "requirements": {
+        "gambero": 2
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r9",
+      "sourceId": 9,
+      "name": "Al Traghetto",
+      "auctionValue": 2,
+      "reward": 6,
+      "requirements": {
+        "sardina": 3
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r10",
+      "sourceId": 10,
+      "name": "Cantina do Mori",
+      "auctionValue": 2,
+      "reward": 7,
+      "requirements": {
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r11",
+      "sourceId": 11,
+      "name": "Bacaro da Lele",
+      "auctionValue": 3,
+      "reward": 8,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r12",
+      "sourceId": 12,
+      "name": "Osteria Luna Piena",
+      "auctionValue": 4,
+      "reward": 8,
+      "requirements": {
+        "polpo": 1,
+        "sardina": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r13",
+      "sourceId": 13,
+      "name": "Al Sole Splendente",
+      "auctionValue": 4,
+      "reward": 12,
+      "requirements": {
+        "branzino": 2,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r14",
+      "sourceId": 14,
+      "name": "Osteria da Tiziano",
+      "auctionValue": 5,
+      "reward": 17,
+      "requirements": {
+        "branzino": 1,
+        "mollusco": 1,
+        "gambero": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r15",
+      "sourceId": 15,
+      "name": "Famiglia Tiepolo",
+      "auctionValue": 5,
+      "reward": 13,
+      "requirements": {
+        "mollusco": 2,
+        "branzino": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r16",
+      "sourceId": 16,
+      "name": "Cantina del Mistero",
+      "auctionValue": 4,
+      "reward": 10,
+      "requirements": {
+        "sardina": 2,
+        "gambero": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r17",
+      "sourceId": 17,
+      "name": "Osteria dell'Angelo",
+      "auctionValue": 3,
+      "reward": 10,
+      "requirements": {
+        "gambero": 1,
+        "sardina": 2
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r18",
+      "sourceId": 18,
+      "name": "Bacaro della Riva",
+      "auctionValue": 2,
+      "reward": 2,
+      "requirements": {
+        "sardina": 1
+      },
+      "improvement": "⚖ Maestro Approvvigionamento"
+    },
+    {
+      "id": "r19",
+      "sourceId": 19,
+      "name": "Bacaro Al Volo",
+      "auctionValue": 3,
+      "reward": 10,
+      "requirements": {
+        "polpo": 2
+      },
+      "improvement": "⚖ Maestro Esperienza"
+    },
+    {
+      "id": "r20",
+      "sourceId": 20,
+      "name": "Vecia Murano",
+      "auctionValue": 4,
+      "reward": 10,
+      "requirements": {
+        "gambero": 1,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r21",
+      "sourceId": 21,
+      "name": "Il Nono di Giudecca",
+      "auctionValue": 2,
+      "reward": 6,
+      "requirements": {
+        "branzino": 2
+      },
+      "improvement": "⚖ Maestro Approvvigionamento"
+    },
+    {
+      "id": "r22",
+      "sourceId": 22,
+      "name": "Laguna Segreta",
+      "auctionValue": 4,
+      "reward": 11,
+      "requirements": {
+        "polpo": 1,
+        "gambero": 1
+      },
+      "improvement": "⚖ Maestro Esperienza"
+    },
+    {
+      "id": "r23",
+      "sourceId": 23,
+      "name": "Ristorante la Fenice",
+      "auctionValue": 3,
+      "reward": 8,
+      "requirements": {
+        "mollusco": 2
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r24",
+      "sourceId": 24,
+      "name": "Alla Tecia",
+      "auctionValue": 4,
+      "reward": 11,
+      "requirements": {
+        "branzino": 1,
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r26",
+      "sourceId": 26,
+      "name": "Osteria del Sestiere",
+      "auctionValue": 5,
+      "reward": 10,
+      "requirements": {
+        "branzino": 2,
+        "sardina": 1
+      },
+      "improvement": "⚖ Maestro Approvvigionamento"
+    },
+    {
+      "id": "r27",
+      "sourceId": 27,
+      "name": "Bacaro del Pirata",
+      "auctionValue": 5,
+      "reward": 5,
+      "requirements": {
+        "polpo": 1
+      },
+      "improvement": "⚖ Maestro Esperienza"
+    },
+    {
+      "id": "r28",
+      "sourceId": 28,
+      "name": "Campiello Segreto",
+      "auctionValue": 7,
+      "reward": 7,
+      "requirements": {
+        "sardina": 1,
+        "gambero": 1
+      },
+      "improvement": "⚖ Maestro Commercio"
+    },
+    {
+      "id": "r29",
+      "sourceId": 29,
+      "name": "Lo Sbarco dei Mori",
+      "auctionValue": 5,
+      "reward": 9,
+      "requirements": {
+        "branzino": 3
+      },
+      "improvement": "⚖ Banco Equilibrato"
+    },
+    {
+      "id": "r30",
+      "sourceId": 30,
+      "name": "Osteria del Ballo",
+      "auctionValue": 6,
+      "reward": 11,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Banco Equilibrato"
+    },
+    {
+      "id": "r31",
+      "sourceId": 31,
+      "name": "Bacaro La Bottega Oscura",
+      "auctionValue": 7,
+      "reward": 14,
+      "requirements": {
+        "mollusco": 2,
+        "gambero": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r33",
+      "sourceId": 33,
+      "name": "Famiglia Dolfin",
+      "auctionValue": 5,
+      "reward": 4,
+      "requirements": {
+        "gambero": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r34",
+      "sourceId": 34,
+      "name": "Osteria del Sapore",
+      "auctionValue": 6,
+      "reward": 7,
+      "requirements": {
+        "sardina": 1,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r35",
+      "sourceId": 35,
+      "name": "Trattoria Al Vecio Calice",
+      "auctionValue": 5,
+      "reward": 5,
+      "requirements": {
+        "polpo": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r36",
+      "sourceId": 36,
+      "name": "Ristorante della Regina",
+      "auctionValue": 6,
+      "reward": 10,
+      "requirements": {
+        "sardina": 2,
+        "branzino": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r37",
+      "sourceId": 37,
+      "name": "Al Ponte del Diavolo",
+      "auctionValue": 7,
+      "reward": 11,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 2
+      },
+      "improvement": "⚖ Diversificazione"
+    },
+    {
+      "id": "r38",
+      "sourceId": 38,
+      "name": "Al Ponte di Rialto",
+      "auctionValue": 5,
+      "reward": 10,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r39",
+      "sourceId": 39,
+      "name": "Trattoria alla Pansa",
+      "auctionValue": 6,
+      "reward": 11,
+      "requirements": {
+        "gambero": 2,
+        "sardina": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r40",
+      "sourceId": 40,
+      "name": "Ai Gondolieri",
+      "auctionValue": 6,
+      "reward": 8,
+      "requirements": {
+        "branzino": 1,
+        "mollusco": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r41",
+      "sourceId": 41,
+      "name": "Il Pescatore Allegro",
+      "auctionValue": 5,
+      "reward": 12,
+      "requirements": {
+        "sardina": 2,
+        "branzino": 2
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r42",
+      "sourceId": 42,
+      "name": "Ristorante Da Fiore",
+      "auctionValue": 6,
+      "reward": 14,
+      "requirements": {
+        "polpo": 1,
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r43",
+      "sourceId": 43,
+      "name": "Al Magna e Bevi",
+      "auctionValue": 5,
+      "reward": 3,
+      "requirements": {
+        "branzino": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r44",
+      "sourceId": 44,
+      "name": "Bacaro Nascosto",
+      "auctionValue": 5,
+      "reward": 8,
+      "requirements": {
+        "mollusco": 2
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r45",
+      "sourceId": 45,
+      "name": "Osteria della Bilancia",
+      "auctionValue": 6,
+      "reward": 7,
+      "requirements": {
+        "gambero": 1,
+        "sardina": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r47",
+      "sourceId": 47,
+      "name": "Osteria del Pesce Fritto",
+      "auctionValue": 5,
+      "reward": 11,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r48",
+      "sourceId": 48,
+      "name": "Osteria alla Vedova Nera",
+      "auctionValue": 6,
+      "reward": 14,
+      "requirements": {
+        "mollusco": 2,
+        "gambero": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r49",
+      "sourceId": 49,
+      "name": "Locanda del Leone",
+      "auctionValue": 6,
+      "reward": 6,
+      "requirements": {
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Banco Equilibrato"
+    },
+    {
+      "id": "r50",
+      "sourceId": 50,
+      "name": "Osteria alla Gondola d'Argento",
+      "auctionValue": 5,
+      "reward": 11,
+      "requirements": {
+        "gambero": 2,
+        "branzino": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r51",
+      "sourceId": 51,
+      "name": "All'Arco Sconto",
+      "auctionValue": 6,
+      "reward": 8,
+      "requirements": {
+        "polpo": 1,
+        "sardina": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r52",
+      "sourceId": 52,
+      "name": "Osteria del Ponte Misterioso",
+      "auctionValue": 6,
+      "reward": 4,
+      "requirements": {
+        "gambero": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r53",
+      "sourceId": 53,
+      "name": "Bacaro all'Antica Sonada",
+      "auctionValue": 5,
+      "reward": 12,
+      "requirements": {
+        "branzino": 2,
+        "mollusco": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r54",
+      "sourceId": 54,
+      "name": "Osteria del Cicheto",
+      "auctionValue": 6,
+      "reward": 17,
+      "requirements": {
+        "branzino": 1,
+        "mollusco": 1,
+        "gambero": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r55",
+      "sourceId": 55,
+      "name": "Al Bucaniere",
+      "auctionValue": 8,
+      "reward": 18,
+      "requirements": {
+        "polpo": 1,
+        "mollusco": 1,
+        "gambero": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r56",
+      "sourceId": 56,
+      "name": "Al Rigattier",
+      "auctionValue": 5,
+      "reward": 11,
+      "requirements": {
+        "sardina": 1,
+        "gambero": 1,
+        "branzino": 1
+      },
+      "improvement": "⚖ Diversificazione"
+    },
+    {
+      "id": "r57",
+      "sourceId": 57,
+      "name": "Osteria del Porto Antico",
+      "auctionValue": 5,
+      "reward": 4,
+      "requirements": {
+        "sardina": 2
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r58",
+      "sourceId": 58,
+      "name": "Alla Calle Sconta",
+      "auctionValue": 7,
+      "reward": 10,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r59",
+      "sourceId": 59,
+      "name": "Bacaro della Serenata",
+      "auctionValue": 5,
+      "reward": 9,
+      "requirements": {
+        "branzino": 3
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r60",
+      "sourceId": 60,
+      "name": "Al Vecio Vaporetto",
+      "auctionValue": 6,
+      "reward": 10,
+      "requirements": {
+        "gambero": 1,
+        "mollusco": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r61",
+      "sourceId": 61,
+      "name": "Bacaro al Balo",
+      "auctionValue": 7,
+      "reward": 17,
+      "requirements": {
+        "branzino": 1,
+        "mollusco": 1,
+        "gambero": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r62",
+      "sourceId": 62,
+      "name": "Osteria alla Perla",
+      "auctionValue": 5,
+      "reward": 13,
+      "requirements": {
+        "mollusco": 2,
+        "branzino": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r63",
+      "sourceId": 63,
+      "name": "Osteria al Turista Perduto",
+      "auctionValue": 6,
+      "reward": 12,
+      "requirements": {
+        "polpo": 1,
+        "sardina": 1,
+        "branzino": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r64",
+      "sourceId": 64,
+      "name": "Osteria Al Nono Scantabauchi",
+      "auctionValue": 7,
+      "reward": 10,
+      "requirements": {
+        "gambero": 1,
+        "sardina": 2
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r65",
+      "sourceId": 65,
+      "name": "Osteria alla Bolla",
+      "auctionValue": 4,
+      "reward": 3,
+      "requirements": {
+        "branzino": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r66",
+      "sourceId": 66,
+      "name": "Osteria alla Briscola",
+      "auctionValue": 6,
+      "reward": 14,
+      "requirements": {
+        "gambero": 1,
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r67",
+      "sourceId": 67,
+      "name": "Bacaro Ai Botti",
+      "auctionValue": 5,
+      "reward": 5,
+      "requirements": {
+        "polpo": 1
+      },
+      "improvement": "⚖ Diversificazione"
+    },
+    {
+      "id": "r68",
+      "sourceId": 68,
+      "name": "Alla Rete",
+      "auctionValue": 5,
+      "reward": 8,
+      "requirements": {
+        "gambero": 2
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r69",
+      "sourceId": 69,
+      "name": "Bacaro Al Vapore",
+      "auctionValue": 5,
+      "reward": 4,
+      "requirements": {
+        "mollusco": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r70",
+      "sourceId": 70,
+      "name": "Bacaro Al Gatto Nero",
+      "auctionValue": 7,
+      "reward": 12,
+      "requirements": {
+        "sardina": 1,
+        "branzino": 1,
+        "gambero": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r71",
+      "sourceId": 71,
+      "name": "Ristorante alla Frasca",
+      "auctionValue": 8,
+      "reward": 11,
+      "requirements": {
+        "polpo": 1,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r72",
+      "sourceId": 72,
+      "name": "Il Nobile Granchio",
+      "auctionValue": 9,
+      "reward": 11,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Maestro Commercio"
+    },
+    {
+      "id": "r73",
+      "sourceId": 73,
+      "name": "Trattoria Pastasutta",
+      "auctionValue": 9,
+      "reward": 18,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r74",
+      "sourceId": 74,
+      "name": "Trattoria del Capitano",
+      "auctionValue": 8,
+      "reward": 10,
+      "requirements": {
+        "polpo": 2
+      },
+      "improvement": "⚖ Maestro Esperienza"
+    },
+    {
+      "id": "r75",
+      "sourceId": 75,
+      "name": "Ristorante Al Gondoliere",
+      "auctionValue": 9,
+      "reward": 14,
+      "requirements": {
+        "gambero": 1,
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Diversificazione"
+    },
+    {
+      "id": "r76",
+      "sourceId": 76,
+      "name": "Osteria dello Squero",
+      "auctionValue": 7,
+      "reward": 3,
+      "requirements": {
+        "branzino": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r77",
+      "sourceId": 77,
+      "name": "Locanda Alle Vele",
+      "auctionValue": 8,
+      "reward": 11,
+      "requirements": {
+        "gambero": 2,
+        "sardina": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r78",
+      "sourceId": 78,
+      "name": "Locanda La Risata",
+      "auctionValue": 9,
+      "reward": 10,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1
+      },
+      "improvement": "⚓ Banco Ampliato"
+    },
+    {
+      "id": "r79",
+      "sourceId": 79,
+      "name": "Ristorante Do Forni",
+      "auctionValue": 10,
+      "reward": 17,
+      "requirements": {
+        "gambero": 1,
+        "mollusco": 1,
+        "branzino": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r80",
+      "sourceId": 80,
+      "name": "Osteria Ninfea",
+      "auctionValue": 6,
+      "reward": 4,
+      "requirements": {
+        "mollusco": 1
+      },
+      "improvement": "⚖ Maestro Esperienza"
+    },
+    {
+      "id": "r81",
+      "sourceId": 81,
+      "name": "Trattoria Al Tesoro",
+      "auctionValue": 9,
+      "reward": 14,
+      "requirements": {
+        "sardina": 1,
+        "gambero": 1,
+        "mollusco": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r82",
+      "sourceId": 82,
+      "name": "Trattoria Al Vin Bon",
+      "auctionValue": 10,
+      "reward": 12,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1,
+        "gambero": 1
+      },
+      "improvement": "⚖ Maestro Approvvigionamento"
+    },
+    {
+      "id": "r83",
+      "sourceId": 83,
+      "name": "Ristorante Ca' Foscari",
+      "auctionValue": 8,
+      "reward": 12,
+      "requirements": {
+        "branzino": 2,
+        "mollusco": 1
+      },
+      "improvement": "⚖ Maestro Commercio"
+    },
+    {
+      "id": "r84",
+      "sourceId": 84,
+      "name": "Trattoria del Rio",
+      "auctionValue": 7,
+      "reward": 6,
+      "requirements": {
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r85",
+      "sourceId": 85,
+      "name": "Osteria Vecio Bacan",
+      "auctionValue": 10,
+      "reward": 14,
+      "requirements": {
+        "mollusco": 2,
+        "gambero": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r86",
+      "sourceId": 86,
+      "name": "Trattoria Ai Pie del Ponte",
+      "auctionValue": 9,
+      "reward": 18,
+      "requirements": {
+        "polpo": 1,
+        "mollusco": 1,
+        "gambero": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r87",
+      "sourceId": 87,
+      "name": "Ristorante La Corte dei Morosini",
+      "auctionValue": 9,
+      "reward": 12,
+      "requirements": {
+        "sardina": 2,
+        "branzino": 2
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r88",
+      "sourceId": 88,
+      "name": "Trattoria Ala Botte Bona",
+      "auctionValue": 8,
+      "reward": 5,
+      "requirements": {
+        "polpo": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r89",
+      "sourceId": 89,
+      "name": "Ristorante Al Tramonto",
+      "auctionValue": 8,
+      "reward": 7,
+      "requirements": {
+        "mollusco": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Banco Equilibrato"
+    },
+    {
+      "id": "r90",
+      "sourceId": 90,
+      "name": "Trattoria Il Gatto Rosso",
+      "auctionValue": 7,
+      "reward": 6,
+      "requirements": {
+        "branzino": 2
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r91",
+      "sourceId": 91,
+      "name": "Famiglia Contarini",
+      "auctionValue": 10,
+      "reward": 11,
+      "requirements": {
+        "polpo": 1,
+        "mollusco": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r92",
+      "sourceId": 92,
+      "name": "Famiglia Dandolo",
+      "auctionValue": 8,
+      "reward": 11,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "⚖ Maestro Commercio"
+    },
+    {
+      "id": "r93",
+      "sourceId": 93,
+      "name": "Famiglia Corner",
+      "auctionValue": 9,
+      "reward": 10,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1
+      },
+      "improvement": "⚖ Maestro Commercio"
+    },
+    {
+      "id": "r94",
+      "sourceId": 94,
+      "name": "Famiglia Zeno",
+      "auctionValue": 10,
+      "reward": 8,
+      "requirements": {
+        "gambero": 1,
+        "branzino": 1
+      },
+      "improvement": "🔨 Nuovi Clienti"
+    },
+    {
+      "id": "r95",
+      "sourceId": 95,
+      "name": "Famiglia Querini",
+      "auctionValue": 6,
+      "reward": 4,
+      "requirements": {
+        "mollusco": 1
+      },
+      "improvement": "⚖ Diversificazione"
+    },
+    {
+      "id": "r96",
+      "sourceId": 96,
+      "name": "Famiglia Barbarigo",
+      "auctionValue": 9,
+      "reward": 14,
+      "requirements": {
+        "sardina": 1,
+        "gambero": 1,
+        "mollusco": 1
+      },
+      "improvement": "🔨 Esperienza"
+    },
+    {
+      "id": "r97",
+      "sourceId": 97,
+      "name": "Famiglia Grimani",
+      "auctionValue": 10,
+      "reward": 12,
+      "requirements": {
+        "polpo": 1,
+        "branzino": 1,
+        "gambero": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    },
+    {
+      "id": "r98",
+      "sourceId": 98,
+      "name": "Famiglia Barbaro",
+      "auctionValue": 8,
+      "reward": 12,
+      "requirements": {
+        "branzino": 2,
+        "mollusco": 1
+      },
+      "improvement": "⚓ Fiuto per il Pescato"
+    },
+    {
+      "id": "r99",
+      "sourceId": 99,
+      "name": "Famiglia Loredan",
+      "auctionValue": 7,
+      "reward": 6,
+      "requirements": {
+        "branzino": 1,
+        "sardina": 1
+      },
+      "improvement": "💰 Contrattazione Sottobanco"
+    },
+    {
+      "id": "r100",
+      "sourceId": 100,
+      "name": "Famiglia Mocenigo",
+      "auctionValue": 10,
+      "reward": 14,
+      "requirements": {
+        "mollusco": 2,
+        "gambero": 1
+      },
+      "improvement": "💰 Favorito della Gilda"
+    }
+  ]
+}
