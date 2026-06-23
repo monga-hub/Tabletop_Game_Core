@@ -41,11 +41,21 @@ export interface ResolveResult {
   completed: RealCard[];            // i contratti completati, nell'ordine in cui sono stati completati
   remainingHand: RealCard[];        // le carte non completate (restano in mano)
   bankAfter: Bank;                  // il Banco dopo aver consumato i pesci dei contratti completati
+  cestaAfter: Bank;                 // la Cesta dopo l'eventuale integrazione (invariata se il Banco bastava)
 }
 
 function canComplete(bank: Bank, req: RealCard["requirements"]): boolean {
   for (const sp of Object.keys(req) as FishSpecies[]) {
     if ((bank[sp] ?? 0) < (req[sp] ?? 0)) return false;
+  }
+  return true;
+}
+
+// Banco e Cesta INSIEME soddisfano il contratto? (per il fallback: il Banco da
+// solo non basta, ma Banco + Cesta si').
+function canCompleteWith(bank: Bank, cesta: Bank, req: RealCard["requirements"]): boolean {
+  for (const sp of Object.keys(req) as FishSpecies[]) {
+    if ((bank[sp] ?? 0) + (cesta[sp] ?? 0) < (req[sp] ?? 0)) return false;
   }
   return true;
 }
@@ -58,28 +68,65 @@ function consume(bank: Bank, req: RealCard["requirements"]): Bank {
   return out;
 }
 
+// Consuma il contratto da Banco (primario) e, SOLO per cio' che manca, da Cesta
+// (integrazione). Restituisce i due contenitori aggiornati. Presuppone che
+// Banco+Cesta bastino (verificato prima della chiamata).
+function consumeWithFallback(bank: Bank, cesta: Bank, req: RealCard["requirements"]): { bank: Bank; cesta: Bank } {
+  const outBank: Bank = { ...bank };
+  const outCesta: Bank = { ...cesta };
+  for (const sp of Object.keys(req) as FishSpecies[]) {
+    const need = req[sp] ?? 0;
+    const fromBank = Math.min(need, outBank[sp] ?? 0); // prima il Banco
+    outBank[sp] = (outBank[sp] ?? 0) - fromBank;
+    const stillNeeded = need - fromBank;
+    if (stillNeeded > 0) outCesta[sp] = (outCesta[sp] ?? 0) - stillNeeded; // poi la Cesta, solo il mancante
+  }
+  return { bank: outBank, cesta: outCesta };
+}
+
 /**
  * Completa i contratti completabili, in ordine di mano, consumando i pesci.
  * Pura: non muta gli argomenti.
+ *
+ * Banco e Cesta hanno RUOLI DIVERSI (regolamento Fase 3: "preleva dal Banco
+ * (e dalla Cesta, se necessario)"). Il Banco e' la fonte PRIMARIA; la Cesta
+ * INTEGRA solo quando il Banco da solo non basta. Non sono due fonti pari: se
+ * il Banco soddisfa il contratto, la Cesta non si tocca. Tenere il ruolo
+ * separato e' necessario perche' la Cesta persiste tra le giornate: collassare
+ * Banco+Cesta in un unico multiset falserebbe cosa resta in Cesta.
+ *
+ * `cesta` e' opzionale: se assente (o vuota), il comportamento e' identico a
+ * prima (solo Banco) — compatibile con i chiamanti che non hanno una Cesta.
  */
-export function resolveContracts(hand: readonly RealCard[], bank: Bank): ResolveResult {
+export function resolveContracts(hand: readonly RealCard[], bank: Bank, cesta: Bank = {}): ResolveResult {
   let currentBank: Bank = { ...bank };
+  let currentCesta: Bank = { ...cesta };
   const completed: RealCard[] = [];
   const remaining: RealCard[] = [];
 
   for (let i = 0; i < hand.length; i++) {
     const card = hand[i];
     if (canComplete(currentBank, card.requirements)) {
+      // il Banco da solo basta: la Cesta non si tocca.
       currentBank = consume(currentBank, card.requirements);
+      completed.push(card);
+    } else if (canCompleteWith(currentBank, currentCesta, card.requirements)) {
+      // il Banco non basta, ma Banco + Cesta si': integra dalla Cesta, solo il
+      // mancante.
+      const after = consumeWithFallback(currentBank, currentCesta, card.requirements);
+      currentBank = after.bank;
+      currentCesta = after.cesta;
       completed.push(card);
     } else {
       remaining.push(card);
     }
   }
 
-  // normalizza il banco (niente chiavi a 0 sparse, per confronti puliti)
+  // normalizza (niente chiavi a 0 sparse, per confronti puliti)
   const bankAfter: Bank = {};
   for (const sp of FISH_SPECIES) if ((currentBank[sp] ?? 0) > 0) bankAfter[sp] = currentBank[sp];
+  const cestaAfter: Bank = {};
+  for (const sp of FISH_SPECIES) if ((currentCesta[sp] ?? 0) > 0) cestaAfter[sp] = currentCesta[sp];
 
-  return { completed, remainingHand: remaining, bankAfter };
+  return { completed, remainingHand: remaining, bankAfter, cestaAfter };
 }

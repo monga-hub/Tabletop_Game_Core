@@ -85,5 +85,40 @@ const card = (sourceId: number): RealCard => {
   ok((r.bankAfter.sardina ?? 0) === 2 && (r.bankAfter.polpo ?? 0) === 2, "il pesce non richiesto resta sul banco");
 }
 
+// --- 7) CESTA come fallback: il Banco e' PRIMARIO ---
+// r9 = 3 sardine. Banco ha 3 sardine: basta da solo, la Cesta NON si tocca.
+{
+  const hand = [card(9)]; // 3 sardine
+  const bank: Bank = { sardina: 3 };
+  const cesta: Bank = { sardina: 2 };
+  const r = resolveContracts(hand, bank, cesta);
+  ok(r.completed.length === 1, "Banco basta (3 sardine): contratto completato");
+  ok((r.cestaAfter.sardina ?? 0) === 2, "il Banco e' PRIMARIO: bastando da solo, la Cesta resta intatta (2 sardine)");
+  ok((r.bankAfter.sardina ?? 0) === 0, "il Banco e' stato consumato");
+}
+
+// --- 8) la Cesta INTEGRA solo il mancante ---
+// r9 = 3 sardine. Banco ha 2, Cesta ha 2. Banco non basta; Banco+Cesta si'.
+// Si attinge 1 dalla Cesta (solo il mancante), restano 1 in Cesta.
+{
+  const hand = [card(9)]; // 3 sardine
+  const bank: Bank = { sardina: 2 };
+  const cesta: Bank = { sardina: 2 };
+  const r = resolveContracts(hand, bank, cesta);
+  ok(r.completed.length === 1, "Banco (2) non basta ma Banco+Cesta (4) si': contratto completato");
+  ok((r.bankAfter.sardina ?? 0) === 0, "il Banco e' svuotato per primo");
+  ok((r.cestaAfter.sardina ?? 0) === 1, "la Cesta integra SOLO il mancante: 2 - 1 = 1 sardina resta");
+}
+
+// --- 9) ne' Banco ne' Banco+Cesta bastano: non completato ---
+{
+  const hand = [card(9)]; // 3 sardine
+  const bank: Bank = { sardina: 1 };
+  const cesta: Bank = { sardina: 1 };
+  const r = resolveContracts(hand, bank, cesta);
+  ok(r.completed.length === 0, "Banco+Cesta (2) < richiesto (3): contratto NON completato");
+  ok((r.bankAfter.sardina ?? 0) === 1 && (r.cestaAfter.sardina ?? 0) === 1, "Banco e Cesta intatti se nulla e' completato");
+}
+
 console.log("");
-if (f === 0) { console.log("VERDE. resolveContracts: completamento locale deterministico secondo la policy 'ordine mano'."); process.exit(0); } else process.exit(1);
+if (f === 0) { console.log("VERDE. resolveContracts: Banco primario, Cesta integra solo il mancante."); process.exit(0); } else process.exit(1);

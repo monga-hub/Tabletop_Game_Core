@@ -72,13 +72,15 @@ export const PescariaContractsCompletedSystem: System = {
     }
     if (intent.type === "pescaria.contracts.resolve") {
       const rh = realHand(state)!;
-      const result = resolveContracts(rh.hand, rh.bank);
+      const cestaState = (state.entities["__cesta__"] as Bank | undefined) ?? {};
+      const result = resolveContracts(rh.hand, rh.bank, cestaState);
       return [{
         type: "pescaria.contracts.completed", producer: NS,
         payload: {
           completed: result.completed,
           remainingHand: result.remainingHand,
           bankAfter: result.bankAfter,
+          cestaAfter: result.cestaAfter,
         },
       }];
     }
@@ -102,6 +104,7 @@ export const PescariaContractsCompletedSystem: System = {
       const completed = event.payload.completed as RealCard[];
       const remainingHand = event.payload.remainingHand as RealCard[];
       const bankAfter = event.payload.bankAfter as Bank;
+      const cestaAfter = event.payload.cestaAfter as Bank | undefined;
       return {
         ...state,
         entities: {
@@ -111,6 +114,8 @@ export const PescariaContractsCompletedSystem: System = {
           __realHand__: { hand: remainingHand, bank: bankAfter } as Record<string, unknown>,
           // il residuo della trasformazione: i contratti completati.
           __completedContracts__: completed as unknown as Record<string, unknown>,
+          // la Cesta dopo l'eventuale integrazione (invariata se il Banco bastava).
+          ...(cestaAfter !== undefined ? { __cesta__: cestaAfter as Record<string, unknown> } : {}),
         },
       };
     }
