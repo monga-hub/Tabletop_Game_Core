@@ -18,8 +18,10 @@
 // operativi. Introdurre un nuovo stato di dominio per implementare un verbo non
 // è un argomento per spezzarlo: è il momento in cui quel pezzo di dominio entra.
 //
-// Trasformazione: __completedContracts__ -> __ducati__ (+) , __bag__ (+pesci).
-// Consuma __completedContracts__ (li azzera: incassati una volta sola).
+// Trasformazione: __completedContracts__ (letto) -> __ducati__ (+) , __bag__
+// (+pesci). NON consuma __completedContracts__: lo legge e lo lascia, perche'
+// il verbo successivo (installazione migliorie, stessa Fase 4) deve leggere le
+// stesse carte. Marca __incomeCollected__ per non re-incassare.
 //
 // Scope: pipeline del dominio reale, single-hand (come __realHand__). Nessun
 // playerId: la struttura multi-giocatore non esiste ancora nella pipeline reale
@@ -59,6 +61,7 @@ export const PescariaIncomeSystem: System = {
     const c = completedContracts(state);
     if (!c) return "no completed contracts: resolve contracts first";
     if (c.length === 0) return "no completed contracts to collect";
+    if (state.entities["__incomeCollected__"] === true) return "income already collected for these contracts";
     return null;
   },
 
@@ -93,9 +96,20 @@ export const PescariaIncomeSystem: System = {
         ...state,
         entities: {
           ...state.entities,
+          // __ducati__: SOLO il denaro/punteggio (regolamento: "denaro guadagnato
+          // e punteggio finale"). NON il Ducato Influenza, che è una risorsa
+          // DISTINTA generata dalla miglioria Esperienza, spendibile in asta.
+          // Se un giorno l'Influenza entrera', sara' uno stato separato, non
+          // questo.
           __ducati__: ducati(state) + earned,            // effetto 1: accredito
           __bag__: newBag as Record<string, unknown>,    // effetto 2: pesce restituito
-          __completedContracts__: [] as unknown as Record<string, unknown>, // incassati: azzerati
+          // __completedContracts__ NON viene azzerato: il verbo SUCCESSIVO
+          // (installazione migliorie, stessa Fase 4) legge "ogni carta contratto
+          // completata". Incasso e Migliorie consumano lo STESSO stato in
+          // sequenza (regolamento Fase 4). Azzerarlo qui distruggerebbe lo stato
+          // prima che l'installazione lo legga. Si marca solo che l'incasso e'
+          // avvenuto, per non re-incassare.
+          __incomeCollected__: true as unknown as Record<string, unknown>,
         },
       };
     }

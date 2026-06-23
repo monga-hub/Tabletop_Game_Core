@@ -52,8 +52,10 @@ ok((bagAfter.sardina ?? 0) === expectedSardineBack, `effetto 2 - ${expectedSardi
 ok((bagAfter.polpo ?? 0) === expectedPolpiBack, `effetto 2 - ${expectedPolpiBack} polpi tornati nel sacchetto`);
 // i due effetti sono dello stesso verbo: entrambi presenti dopo un solo incasso
 ok(ducati > 0 && (bagAfter.sardina ?? 0) + (bagAfter.polpo ?? 0) > 0, "i due effetti avvengono insieme (un solo verbo)");
-// contratti incassati una volta sola
-ok(completedAfter.length === 0, "i contratti completati sono azzerati dopo l'incasso (non re-incassabili)");
+// contratti completati NON azzerati: il verbo successivo (installazione
+// migliorie) deve poterli leggere. Incasso e Migliorie consumano lo stesso stato.
+ok(completedAfter.length === 2, "i contratti completati RESTANO dopo l'incasso (li consumera' l'installazione migliorie)");
+ok(s.getState().entities["__incomeCollected__"] === true, "l'incasso e' marcato come avvenuto");
 
 // conservazione del pesce: RIPRISTINATA come conseguenza del verbo completo.
 // banco residuo (r9 non completato non ha consumato nulla; bank era 1 sardina+2 polpi,
@@ -62,9 +64,9 @@ ok(completedAfter.length === 0, "i contratti completati sono azzerati dopo l'inc
 const bagTotal = FISH_SPECIES.reduce((s, sp) => s + (bagAfter[sp] ?? 0), 0);
 ok(bagTotal === expectedSardineBack + expectedPolpiBack, "conservazione: il pesce tornato nel sacchetto eguaglia quello speso per i contratti incassati");
 
-// re-incasso senza nuovi contratti: rifiutato
+// re-incasso: rifiutato dal flag (i contratti sono ancora lì, ma già incassati)
 const r = s.submit({ type: "pescaria.income.collect", agentId: "h", payload: {} });
-ok(!r.accepted, "income.collect senza contratti completati e' rifiutato");
+ok(!r.accepted, "income.collect ripetuto e' rifiutato (gia' incassato), benche' i contratti siano ancora presenti");
 
 // replay == stato
 const a = JSON.stringify(s.getState());
