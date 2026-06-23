@@ -21,7 +21,7 @@
 // Trasformazione: __completedContracts__ (letto) -> __ducati__ (+) , __bag__
 // (+pesci). NON consuma __completedContracts__: lo legge e lo lascia, perche'
 // il verbo successivo (installazione migliorie, stessa Fase 4) deve leggere le
-// stesse carte. Marca __incomeCollected__ per non re-incassare.
+// stesse carte. L'incasso non possiede quello stato.
 //
 // Scope: pipeline del dominio reale, single-hand (come __realHand__). Nessun
 // playerId: la struttura multi-giocatore non esiste ancora nella pipeline reale
@@ -61,7 +61,6 @@ export const PescariaIncomeSystem: System = {
     const c = completedContracts(state);
     if (!c) return "no completed contracts: resolve contracts first";
     if (c.length === 0) return "no completed contracts to collect";
-    if (state.entities["__incomeCollected__"] === true) return "income already collected for these contracts";
     return null;
   },
 
@@ -103,13 +102,13 @@ export const PescariaIncomeSystem: System = {
           // questo.
           __ducati__: ducati(state) + earned,            // effetto 1: accredito
           __bag__: newBag as Record<string, unknown>,    // effetto 2: pesce restituito
-          // __completedContracts__ NON viene azzerato: il verbo SUCCESSIVO
-          // (installazione migliorie, stessa Fase 4) legge "ogni carta contratto
-          // completata". Incasso e Migliorie consumano lo STESSO stato in
-          // sequenza (regolamento Fase 4). Azzerarlo qui distruggerebbe lo stato
-          // prima che l'installazione lo legga. Si marca solo che l'incasso e'
-          // avvenuto, per non re-incassare.
-          __incomeCollected__: true as unknown as Record<string, unknown>,
+          // __completedContracts__ NON viene toccato: l'incasso lo LEGGE e lo
+          // lascia. Il verbo SUCCESSIVO (installazione migliorie, stessa Fase 4)
+          // legge le stesse carte e sara' quello a consumarlo. L'incasso non lo
+          // possiede. Nessun flag 'gia' incassato': la pipeline attuale esegue
+          // il verbo una volta sola, il doppio incasso non e' un caso osservato.
+          // Se emergera' (orchestrazione che puo' rieseguire il verbo), allora un
+          // caso concreto giustifichera' una rappresentazione - non prima.
         },
       };
     }
