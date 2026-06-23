@@ -39,20 +39,36 @@ Solo qui: ciclo delle giornate, partita completa, punteggio, condizioni di fine.
 5. **Criterio di arresto**: quando la conversazione non cambia più quale codice
    si scriverà dopo, è finita. Tornare al simulatore.
 
-## Stato corrente (Fase A1)
+## Stato corrente (Fase A1 — audit completato)
 
-Audit in corso. Tre inferenze testate finora:
-- «il simulatore è single-player» → FALSA. Fase 1 (pesca, draft) e Fase 2
-  (offerte, risoluzione) sono già plurali.
-- «la pipeline reale è tutta single-hand» → vera ma circoscritta: solo Fase 3-4
+Audit dei verbi terminato. Inferenze testate e risultati:
+- «il simulatore è single-player» → FALSA. Fase 1-2 già plurali.
+- «la pipeline reale è tutta single-hand» → vera ma circoscritta: Fase 3-4
   (contracts-completed, income, move-to-basket, install, balance).
 - «l'acquisto è l'unico placeholder» → imprecisa: acquisto = placeholder
   strutturale; resolveContracts ha una decisione segnaposto (ordine di
   completamento). Due gradi di non-finito, da non fondere né tassonomizzare.
+- «la cesura plurale/single-hand coincide col confine Fase 2/Fase 3» → SMENTITA,
+  e in modo importante. Non c'è una cesura: c'è una FRATTURA. Il "banco" esiste
+  in DUE rappresentazioni scollegate:
+    · __banks__ = Record<string,Tally> (plurale, per giocatore) — scritto da
+      purchase (Fase 2);
+    · __realHand__.bank = singolo Tally — letto da contracts-completed, income,
+      move-to-basket (Fase 3-4).
+  Sono DUE banchi diversi: purchase riempie __banks__[winner], i contratti
+  consumano da __realHand__.bank, che nessun verbo dell'asta riempie. Il pesce
+  vinto all'asta NON arriva ai contratti.
 
-**Ipotesi che l'audit deve tentare di smentire (una sola):** la cesura tra
-modello plurale e modello single-hand coincide col confine Fase 2 / Fase 3.
-Smentita se: un verbo Fase 1-2 è single-hand; o un verbo Fase 3-4 è già plurale;
-o la pluralità è per-verbo sparsa senza allineamento alle fasi; o l'acquisto è
-l'unico ponte (un verbo-cerniera, non una linea). Verbi non ancora verificati:
-offer, auction-resolution, draft-pick, install-improvements, balance-income.
+**Fatto strutturale (osservato, non inferito):** il simulatore è fatto di DUE
+pipeline parallele MAI collegate — il troncone multi-giocatore
+(pesca → asta → __banks__) e il troncone single-hand dei contratti
+(__realHand__ → completamento → incasso → installazione → bilancia). La pipeline
+reale è sempre stata alimentata iniettando un banco a mano nei test, mai
+ricevendo il pesce da purchase. L'acquisto non è "il ponte su una cesura": è la
+fine del primo troncone, il cui output (__banks__) non è mai stato connesso
+all'input del secondo (__realHand__.bank).
+
+Conseguenza per la roadmap: prima di Fase B (aumento di espressività) e Fase C
+(sostituzione placeholder) c'è un lavoro di Fase A non previsto — collegare i due
+tronconi, o decidere consapevolmente di tenerli separati. È esprimibile col
+linguaggio attuale (entrambe le rappresentazioni esistono): è Fase A, non B.
