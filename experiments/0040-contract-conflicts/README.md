@@ -18,7 +18,7 @@ Due classi di esperimento, da non confondere:
   una partita"). Non ancora possibile: richiede mani e banchi prodotti dal
   gioco reale (draft + asta).
 
-## Metodologia
+## Protocollo
 
 - Dataset fissato: mazzo 2026 (97 carte).
 - "Stato conflittuale" = definizione di **dominio**: esistono ≥2 insiemi di
@@ -26,8 +26,16 @@ Due classi di esperimento, da non confondere:
   le permutazioni). NON la definizione procedurale legata alla policy.
 - 100.000 campioni (mano di 4 carte distinte + banco) generati in modo
   **dichiaratamente arbitrario**. Il campionamento arbitrario è valido per una
-  domanda di esistenza (basta trovarne uno) e NON per una di densità (il
+  domanda di esistenza (basta trovarne uno) e NON per una di distribuzione (il
   numero dipenderebbe dal campionamento).
+
+> Le quattro sezioni — Domanda, Protocollo, Osservazione, Interpretazione —
+> sono indipendenti. Prova osservata su questo esperimento: la correzione della
+> domanda ("ammette stati costruibili") non ha toccato né il protocollo né il
+> numero. Si può cambiare la domanda lasciando identico il risultato (ne cambia
+> il *significato*), o cambiare il protocollo lasciando identica la domanda (ne
+> cambia il *numero*). È una forma osservata su UN caso, non ancora un formato
+> imposto: il prossimo esperimento dirà se regge a un caso diverso.
 
 ## Osservazione
 
